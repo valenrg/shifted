@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shifted · Issue 06 · The 1/3 of Alzheimer's cases lifestyle can prevent</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-base:#0D0A14;--bg-surface:#15101F;--bg-elevated:#1D1729;
+  --border-subtle:#221B30;--border-default:#2E2542;--border-strong:#3E3358;
+  --text-primary:#F2EEF8;--text-secondary:#9C97B4;--text-muted:#5E5A76;--text-faint:#3F3B53;
+  --teal:#12AACF;--teal-light:#3EC0E0;--teal-dark:#0B7189;--teal-bg:#061820;--teal-border:#0C3E50;
+  --cyan:#52D1DC;--cyan-bg:#04191C;--cyan-border:#0A3438;
+  --lav:#AFA2FF;--lav-bg:#100D24;--lav-border:#201860;
+  --plum:#C07FDA;--plum-bg:#180E22;--plum-border:#361848;
+  --pa:#12AACF;--pa-light:#3EC0E0;--pa-dark:#0B7189;--pa-bg:#061820;--pa-border:#0C3E50;
+  --ff-display:'Bricolage Grotesque',sans-serif;
+  --ff-body:'DM Sans',sans-serif;
+  --ff-mono:'JetBrains Mono',monospace;
+  --r-xs:4px;--r-sm:8px;--r-md:12px;--r-full:9999px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:var(--bg-base);color:var(--text-secondary);font-family:var(--ff-body);font-size:15px;line-height:1.8;-webkit-font-smoothing:antialiased;}
+button{cursor:pointer;font-family:var(--ff-body);border:none;background:none;}
+
+/* NAV */
+.gh-nav{position:sticky;top:0;z-index:100;background:rgba(13,10,20,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-subtle);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:44px;gap:16px;}
+.gh-nav a{text-decoration:none;}
+.gh-brand{font-family:var(--ff-display);font-weight:800;font-size:15px;background:linear-gradient(90deg,var(--lav) 0%,var(--cyan) 38%,var(--teal) 62%,var(--plum) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.gh-meta{font-family:var(--ff-mono);font-size:10px;color:var(--text-muted);}
+
+.gh-nav-btn{font-family:var(--ff-mono);font-size:11px;font-weight:600;color:var(--text-muted);padding:5px 10px;border-radius:6px;border:1px solid transparent;transition:all .12s;white-space:nowrap;text-decoration:none;}
+.gh-nav-btn:hover{color:var(--text-primary);border-color:var(--border-default);background:var(--bg-elevated);}
+
+@media(max-width:480px){.gh-meta{display:none;}}
+
+/* LAYOUT */
+.nl-head{padding:44px 24px 36px;border-bottom:1px solid var(--border-subtle);max-width:700px;margin:0 auto;}
+.nl-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:28px;}
+.nl-brand-name{font-family:var(--ff-display);font-weight:800;font-size:17px;letter-spacing:-0.3px;background:linear-gradient(90deg,var(--lav) 0%,var(--cyan) 38%,var(--teal) 62%,var(--plum) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.nl-brand-sep{color:var(--border-strong);}
+.nl-brand-meta{font-size:11px;color:var(--text-muted);font-family:var(--ff-mono);}
+.nl-tag-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px;}
+.nl-tag{display:inline-flex;align-items:center;padding:3px 10px;border-radius:var(--r-full);font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;border:1px solid var(--pa-border);background:var(--pa-bg);color:var(--pa);font-family:var(--ff-mono);}
+.nl-tag.muted{border-color:var(--border-default);background:var(--bg-elevated);color:var(--text-muted);}
+.nl-issue-title{font-family:var(--ff-display);font-size:clamp(28px,5vw,42px);font-weight:800;letter-spacing:-0.8px;line-height:1.1;color:var(--text-primary);margin-bottom:14px;}
+.nl-issue-sub{font-size:15px;color:var(--text-secondary);line-height:1.65;max-width:580px;}
+
+.nl-body{max-width:700px;margin:0 auto;padding:44px 24px 0;}
+.nl-body p{font-size:15px;line-height:1.8;color:var(--text-secondary);margin-bottom:18px;}
+.nl-body p:last-child{margin-bottom:0;}
+.nl-body p strong{color:var(--text-primary);font-weight:600;}
+
+.nl-section{margin-bottom:40px;}
+.nl-section-hdr{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border-subtle);}
+.nl-section-icon{font-size:18px;}
+.nl-section-label{font-family:var(--ff-mono);font-size:10px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--pa);}
+.nl-section-label.teal{color:var(--teal);}
+.nl-section-label.lav{color:var(--lav);}
+.nl-section-label.plum{color:var(--plum);}
+.nl-section-label.muted{color:var(--text-muted);}
+
+.nl-h2{font-family:var(--ff-display);font-size:22px;font-weight:700;letter-spacing:-0.4px;color:var(--text-primary);margin:0 0 16px;line-height:1.2;}
+.nl-h3{font-family:var(--ff-display);font-size:15px;font-weight:700;letter-spacing:-0.1px;color:var(--pa);margin:24px 0 8px;}
+
+.nl-box{border-radius:var(--r-md);padding:20px 22px;margin-bottom:18px;border:1px solid;}
+.nl-box-science{background:var(--pa-bg);border-color:var(--pa-border);}
+.nl-box-expert{background:var(--bg-elevated);border-color:var(--border-default);}
+.nl-box-breath{background:var(--teal-bg);border-color:var(--teal-border);border-left:3px solid var(--teal);border-radius:0 var(--r-md) var(--r-md) 0;padding-left:24px;}
+.nl-box-track{background:var(--lav-bg);border-color:var(--lav-border);}
+.nl-box-plate{background:#060E12;border-color:#0C3E50;}
+.nl-box-move{background:var(--plum-bg);border-color:var(--plum-border);}
+.nl-box-label{font-family:var(--ff-mono);font-size:9px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--pa);margin-bottom:12px;}
+.nl-box-breath .nl-box-label{color:var(--teal);}
+.nl-box-plate  .nl-box-label{color:var(--teal);}
+.nl-box-move   .nl-box-label{color:var(--plum);}
+.nl-box-track  .nl-box-label{color:var(--lav);}
+
+.nl-pull{border-left:3px solid var(--pa);margin:28px 0;padding:16px 22px;background:var(--bg-elevated);border-radius:0 var(--r-sm) var(--r-sm) 0;}
+.nl-pull p{font-family:var(--ff-display);font-size:17px;font-weight:600;font-style:italic;line-height:1.6;color:var(--text-primary)!important;margin-bottom:10px!important;}
+.nl-pull cite{font-size:11px;color:var(--text-muted);font-family:var(--ff-mono);font-style:normal;}
+
+.nl-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:26px;}
+.nl-stat{background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:16px;text-align:center;}
+.nl-stat-val{font-family:var(--ff-mono);font-size:24px;font-weight:700;color:var(--pa);line-height:1;margin-bottom:6px;}
+.nl-stat-lbl{font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:4px;}
+.nl-stat-sub{font-size:11px;color:var(--text-muted);line-height:1.4;}
+
+/* RISK FACTOR CARDS */
+.risk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:16px 0;}
+.risk-card{background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:14px 16px;border-top:2px solid var(--pa);}
+.risk-life{font-family:var(--ff-mono);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:6px;}
+.risk-name{font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:4px;}
+.risk-action{font-size:12px;color:var(--text-secondary);line-height:1.5;}
+
+/* CYCLE 1 RECAP */
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin:16px 0;}
+.recap-card{background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--r-sm);padding:12px 14px;display:flex;gap:10px;align-items:flex-start;}
+.recap-num{font-family:var(--ff-mono);font-size:10px;font-weight:700;color:var(--text-faint);flex-shrink:0;margin-top:1px;}
+.recap-text{font-size:12.5px;color:var(--text-secondary);line-height:1.5;}
+.recap-text strong{color:var(--text-primary);font-size:12px;}
+
+.nl-devices{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;}
+.nl-device-pill{font-family:var(--ff-mono);font-size:10px;font-weight:600;padding:3px 10px;border-radius:var(--r-full);background:var(--lav-bg);color:var(--lav);border:1px solid var(--lav-border);}
+
+.nl-reset-list{display:flex;flex-direction:column;gap:8px;}
+.nl-reset-card{display:flex;gap:14px;align-items:flex-start;background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--r-sm);padding:14px 16px;}
+.nl-reset-icon{font-size:18px;flex-shrink:0;margin-top:2px;}
+.nl-reset-lbl{font-size:10px;font-weight:700;color:var(--pa);text-transform:uppercase;letter-spacing:.8px;font-family:var(--ff-mono);margin-bottom:4px;}
+.nl-reset-text{font-size:13.5px;color:var(--text-secondary);line-height:1.6;}
+
+.nl-divider{height:1px;background:var(--border-subtle);margin:36px 0;}
+
+.nl-source-roll{margin-top:48px;padding-top:28px;border-top:1px solid var(--border-subtle);}
+.nl-source-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}
+.nl-source-title{font-family:var(--ff-mono);font-size:10px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--pa);}
+.btn-toggle-src{background:var(--bg-elevated);border:1px solid var(--border-default);border-radius:var(--r-full);padding:3px 10px;font-size:11px;color:var(--text-muted);font-family:var(--ff-mono);}
+.nl-src-list{display:flex;flex-direction:column;gap:8px;}
+.nl-src-item{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:var(--r-sm);border:1px solid var(--border-subtle);background:var(--bg-surface);}
+.nl-src-code{font-family:var(--ff-mono);font-size:9px;font-weight:700;padding:2px 7px;border-radius:var(--r-xs);color:#050F14;flex-shrink:0;margin-top:2px;white-space:nowrap;}
+.nl-src-full{font-size:12px;color:var(--text-secondary);line-height:1.5;margin-bottom:4px;}
+.nl-src-audio{font-size:11px;color:var(--text-muted);font-style:italic;font-family:var(--ff-mono);}
+
+.nl-footer{max-width:700px;margin:44px auto 0;padding:20px 24px 60px;border-top:1px solid var(--border-subtle);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.nl-footer span{font-family:var(--ff-mono);font-size:10px;color:var(--text-muted);}
+.nl-footer .next{font-style:italic;color:var(--pa);}
+
+@media(max-width:480px){
+  .nl-stats{grid-template-columns:repeat(2,1fr);}
+  .risk-grid{grid-template-columns:1fr;}
+  .recap-grid{grid-template-columns:1fr;}
+}
+</style>
+
+<script>
+const SOURCES = {
+  XX:      { code:"XX",       color:"#AFA2FF", short:"The XX Brain",          full:"Dr. Lisa Mosconi, The XX Brain: The Groundbreaking Science Empowering Women to Maximize Cognitive Health and Prevent Alzheimer's Disease (Avery/Penguin Random House, 2020)", spoken:"Dr. Lisa Mosconi in The XX Brain" },
+  DOAC_LM: { code:"DOAC·LM", color:"#12AACF", short:"DOAC — Dr. Mosconi",    full:"Dr. Lisa Mosconi on The Diary of a CEO with Steven Bartlett, 'This Diet Delays Menopause / Menopause Is Shrinking Your Brain,' June 13, 2024",                                 spoken:"Dr. Lisa Mosconi on The Diary of a CEO, June 2024" },
+  TRAIN:   { code:"TRAIN",   color:"#52D1DC", short:"How to Train Guide",     full:"How to Train According to the Experts: A Guide on Getting Strong, Building Muscle, and Elevating Fitness (HowToTrainGuide.com, 2024)",                                            spoken:"the How to Train According to the Experts guide" },
+  HAVER_NM:{ code:"HAVER·NM",color:"#E8A44A", short:"The New Menopause",      full:"Dr. Mary Claire Haver, The New Menopause: Navigating Your Path Through Hormonal Change with Purpose, Power, and Facts (Rodale Books, 2024)",                                      spoken:"Dr. Mary Claire Haver in The New Menopause" },
+  ROAR:    { code:"ROAR",    color:"#C07FDA", short:"ROAR",                   full:"Dr. Stacy Sims, ROAR: Match Your Food and Fitness to Your Unique Female Physiology for Optimum Performance, Great Health, and a Strong Body for Life (Rodale Books, revised edition)", spoken:"Dr. Stacy Sims in ROAR" },
+  LANCET:  { code:"LANCET",  color:"#12AACF", short:"Lancet Commission 2024", full:"Livingston G. et al., 'Dementia prevention, intervention, and care: 2024 report of the Lancet standing Commission,' The Lancet, 2024. (Updates the 2020 and 2017 reports identifying 14 modifiable risk factors.)", spoken:"the 2024 Lancet Commission report on dementia prevention" },
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+  var btnSrc  = document.getElementById('btn-sources');
+  var srcBody = document.getElementById('source-body');
+  var srcList = document.getElementById('src-list');
+  if (btnSrc && srcBody && srcList) {
+    Object.values(SOURCES).forEach(function(s) {
+      var item = document.createElement('div');
+      item.className = 'nl-src-item';
+      item.innerHTML =
+        '<span class="nl-src-code" style="background:' + s.color + '">' + s.code + '</span>' +
+        '<div><div class="nl-src-full">' + s.full + '</div>' +
+        '<div class="nl-src-audio" style="color:' + s.color + '">' + s.spoken + '</div></div>';
+      srcList.appendChild(item);
+    });
+    btnSrc.addEventListener('click', function() {
+      var hidden = srcBody.style.display === 'none';
+      srcBody.style.display = hidden ? 'block' : 'none';
+      btnSrc.textContent = hidden ? 'Hide sources' : 'Show sources';
+    });
+  }
+});
+</script>
+</head>
+<body class="issue-longevity">
+
+<!-- NAV -->
+<nav class="gh-nav">
+  <a href="index.html" class="gh-brand">shifted</a>
+  <span class="gh-meta">Issue 06 · Longevity Lifestyle · Cycle 1</span>
+  <a href="index.html" class="gh-nav-btn">← All issues</a>
+</nav>
+
+<!-- MASTHEAD -->
+<header class="nl-head">
+  <div class="nl-brand-row">
+    <span class="nl-brand-name">shifted</span>
+    <span class="nl-brand-sep">/</span>
+    <span class="nl-brand-meta">Issue 06 · Week 6 · Cycle 1</span>
+  </div>
+  <div class="nl-tag-row">
+    <span class="nl-tag">Longevity Lifestyle</span>
+    <span class="nl-tag muted">~15 min read</span>
+    <span class="nl-tag muted">Cycle 1: The Foundations</span>
+  </div>
+  <h1 class="nl-issue-title">The 1/3 of Alzheimer's cases lifestyle can prevent</h1>
+  <p class="nl-issue-sub">The 2024 Lancet Commission identified 14 modifiable risk factors. Together they account for nearly half of all dementia cases worldwide — and you control most of them.</p>
+</header>
+
+<!-- BODY -->
+<main class="nl-body">
+
+  <p>This is the final issue of Cycle 1. Over the past five weeks we've covered what perimenopause does to your brain, why muscle is a longevity organ, how to eat for a changing hormonal environment, what's wrecking your sleep, and which supplements actually hold up to scrutiny. This week is the synthesis: the bigger picture that connects all of those pieces into a single coherent argument.</p>
+  <p>That argument is this: Alzheimer's disease is not an inevitability. It is not primarily a disease of old age that strikes randomly. For the majority of people, it is the endpoint of a decades-long process that is shaped — profoundly and measurably — by the choices and environments of midlife. The science has moved far enough that we can now name those factors, quantify their contribution, and do something about them.</p>
+
+  <div class="nl-divider"></div>
+
+  <!-- 1. SCIENCE -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">🔬</span>
+      <span class="nl-section-label">This Week's Science</span>
+    </div>
+    <div class="nl-box nl-box-science">
+      <p>The 2024 Lancet Commission on dementia prevention — an international body of the world's leading dementia researchers — published its most comprehensive update to date, identifying 14 modifiable risk factors that together account for approximately 45 percent of all dementia cases globally. This is up from the 35 percent estimated in the original 2017 report, which identified nine factors, and reflects both new research and two newly added risk factors: high LDL cholesterol and untreated vision loss in later life.</p>
+      <p>The implication is direct: nearly half of all dementia cases worldwide could theoretically be prevented or significantly delayed if these risk factors were addressed. This is not a marginal finding. It is one of the most important public health conclusions in the history of brain disease research — and for women specifically, whose Alzheimer's burden is disproportionate, it is the most actionable framework available.</p>
+    </div>
+  </div>
+
+  <!-- 2. DEEP DIVE -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">💡</span>
+      <span class="nl-section-label">The Deep Dive</span>
+    </div>
+    <h2 class="nl-h2">14 modifiable risk factors — and where women are most exposed</h2>
+
+    <div class="nl-stats">
+      <div class="nl-stat"><div class="nl-stat-val">45%</div><div class="nl-stat-lbl">Of dementia cases</div><div class="nl-stat-sub">Attributable to 14 modifiable risk factors, Lancet 2024</div></div>
+      <div class="nl-stat"><div class="nl-stat-val">⅔</div><div class="nl-stat-lbl">Alzheimer's patients</div><div class="nl-stat-sub">Are women — the most disproportionate disease burden of any major condition</div></div>
+      <div class="nl-stat"><div class="nl-stat-val">30+</div><div class="nl-stat-lbl">Risk factors identified</div><div class="nl-stat-sub">Genetic, medical, lifestyle, cultural — that impact women and men differently</div></div>
+      <div class="nl-stat"><div class="nl-stat-val">40s</div><div class="nl-stat-lbl">The critical window</div><div class="nl-stat-sub">When midlife risk factors cause the most irreversible brain change</div></div>
+    </div>
+
+    <p>The 14 factors are grouped by life stage — early life, midlife, and later life — because the brain's vulnerability to each factor changes over time. For women reading this in perimenopause, the midlife cluster is where the most leverage lies. These are the years when risk factors cause the most compounding brain change, and when intervention has the greatest effect.</p>
+
+    <h3 class="nl-h3">The 14 factors — mapped to your life stage</h3>
+    <div class="risk-grid">
+      <div class="risk-card" style="border-top-color:var(--lav)">
+        <div class="risk-life" style="color:var(--lav)">Early life</div>
+        <div class="risk-name">Less education</div>
+        <div class="risk-action">Lower cognitive reserve. Lifelong intellectual engagement compensates — but less efficiently than formal education early on.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-life">Midlife</div>
+        <div class="risk-name">Hypertension</div>
+        <div class="risk-action">Damages small blood vessels supplying the brain. Rises with estrogen loss. Target: below 130/80 mmHg.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-life">Midlife</div>
+        <div class="risk-name">Hearing impairment</div>
+        <div class="risk-action">Untreated hearing loss is the single largest modifiable risk factor. Hearing aids reduce the associated dementia risk. Get tested.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-life">Midlife</div>
+        <div class="risk-name">High LDL cholesterol</div>
+        <div class="risk-action">New in 2024. sdLDL (the small dense variant Dr. Haver tracks) is particularly relevant during perimenopause — and missed by standard panels.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-life">Midlife</div>
+        <div class="risk-name">Obesity</div>
+        <div class="risk-action">Visceral belly fat drives systemic inflammation that crosses the blood-brain barrier. Resistance training and dietary change are the primary interventions.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-life">Midlife</div>
+        <div class="risk-name">Traumatic brain injury</div>
+        <div class="risk-action">Protective headwear in high-risk activities. Women's concussion recovery is slower and outcomes are worse — an under-recognised biological difference.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-life">Midlife</div>
+        <div class="risk-name">Excessive alcohol</div>
+        <div class="risk-action">Above 21 units per week. Women are more sensitive to alcohol's neurotoxic effects than men, at equivalent doses and bodyweight.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-life">Later life</div>
+        <div class="risk-name">Smoking</div>
+        <div class="risk-action">Doubles Alzheimer's risk. Women's nicotine dependence is more strongly tied to mood regulation, making cessation harder — and more necessary.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-life">Later life</div>
+        <div class="risk-name">Depression</div>
+        <div class="risk-action">Both a risk factor and an early symptom. The perimenopause-depression connection (Issues 01 and 04) makes hormonal evaluation before antidepressants even more important.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-life">Later life</div>
+        <div class="risk-name">Social isolation</div>
+        <div class="risk-action">Loneliness is as cognitively damaging as smoking. Women who lose a partner face particular risk — the "caregiver burden" cuts both ways.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-life">Later life</div>
+        <div class="risk-name">Physical inactivity</div>
+        <div class="risk-action">The same resistance training and VO₂ max work from Issue 02 directly reduces this risk. It is never too late for it to matter.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-life">Later life</div>
+        <div class="risk-name">Diabetes</div>
+        <div class="risk-action">The blood sugar and insulin resistance content in Issue 03 is directly relevant here. Preventing type 2 diabetes is one of the most accessible dementia prevention levers.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-life">Later life</div>
+        <div class="risk-name">Air pollution</div>
+        <div class="risk-action">Fine particulate matter (PM2.5) enters the brain and accelerates neuroinflammation. HEPA filtration at home, particularly in bedrooms, is worth the investment.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-life">Later life — New 2024</div>
+        <div class="risk-name">Untreated vision loss</div>
+        <div class="risk-action">New in the 2024 report. Corrected vision — glasses, cataract surgery — reduces the associated dementia risk. Annual eye exams become cognitively protective.</div>
+      </div>
+    </div>
+
+    <h3 class="nl-h3">The two factors most specific to women</h3>
+    <p>Of the 14, two deserve special emphasis for women in midlife — not because they're on the list, but because they interact with the hormonal transition in ways that amplify risk beyond what the population-level data captures.</p>
+    <p><strong>Social isolation.</strong> Women who step back from social roles — through career changes, children leaving home, relationship breakdown, or caring for ageing parents — face a compounding risk. The "caregiver burden," which falls disproportionately on women, is itself a form of chronic stress that directly drives the pregnenolone steal (Issue 04) and raises cortisol, which in turn suppresses the very hormones that protect the brain. Connection is not optional at this life stage. It is a biological requirement for the brain.</p>
+    <p><strong>Depression.</strong> Women are twice as likely to experience depression as men. In perimenopause, the hormonal-depression link means that untreated low mood is not just a quality-of-life issue — it is a measurable driver of cognitive risk. The overlap between perimenopause symptoms and depression is significant enough that both Dr. Mosconi and Dr. Haver recommend hormonal evaluation before antidepressants in perimenopausal women presenting with mood changes.</p>
+
+    <div class="nl-pull">
+      <p>"Memory loss doesn't begin according to a date on the calendar — it's determined in large part by all the choices we make and all the experiences we have along the way."</p>
+      <cite>— Dr. Lisa Mosconi, The XX Brain</cite>
+    </div>
+
+    <h3 class="nl-h3">One factor that doesn't make the list — but should be on yours</h3>
+    <p>Dental hygiene. It sits outside the 14 because the evidence, while compelling, is not yet at the same level of certainty. But research has linked oral bacteria — specifically Porphyromonas gingivalis, the primary driver of gum disease — directly to Alzheimer's plaques in post-mortem brain tissue. The mechanism is systemic inflammation: gum disease creates a chronic low-grade inflammatory state that stresses the same vascular and immune systems that protect the brain. Twice-daily brushing, flossing, and regular dental cleanings are, by any plausible reading of this evidence, part of a serious brain health protocol.</p>
+  </div>
+
+  <!-- 3. FROM THE EXPERTS -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">🎙️</span>
+      <span class="nl-section-label">From the Experts</span>
+    </div>
+    <div class="nl-box nl-box-expert">
+      <div class="nl-box-label">Dr. Mosconi — The Diary of a CEO, June 2024</div>
+      <p>On The Diary of a CEO, Dr. Mosconi was asked directly: given everything you know about the female brain, what would you tell your younger self? Her answer centred not on any single intervention, but on the principle of starting early — understanding that the choices made in your forties have a longer shadow on cognitive health than almost anything done in your sixties.</p>
+      <p>She made one point that reframes the entire conversation: "You have more control over your risk of dementia than you think." The determinism that most people feel about Alzheimer's — it runs in the family, it's genetic, there's nothing to be done — is contradicted by the data. Even for APOE-4 carriers, lifestyle modification demonstrably changes the trajectory of brain ageing. The genetic card is not a sentence. It is a warning that requires a response.</p>
+      <p>Her other key point: the perimenopause transition is not a risk to be managed — it is a biological window to be used. The same hormonal upheaval that makes the brain vulnerable also makes it responsive. Interventions land harder in this decade than they will later. The window is open now.</p>
+    </div>
+  </div>
+
+  <!-- 4. BREATHE & RECOVER -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">🌬️</span>
+      <span class="nl-section-label teal">Breathe &amp; Recover</span>
+    </div>
+    <div class="nl-box nl-box-breath">
+      <div class="nl-box-label">Longevity application — hormetic stress protocols</div>
+      <p style="font-size:14px;line-height:1.75;color:var(--text-secondary);margin-bottom:14px;">The principle underlying sauna, cold exposure, and Wim Hof breathing is <strong style="color:var(--text-primary)">hormesis</strong> — the biological response to mild, controlled stress that upregulates adaptive systems across the body and brain. Heat activates heat shock proteins that repair damaged cellular structures. Cold spikes norepinephrine that protects dopamine pathways. Both trigger mitochondrial biogenesis — the production of new cellular energy machinery — which is directly relevant to the cerebral hypometabolism (reduced brain energy) we covered in Issue 01.</p>
+      <p style="font-size:14px;line-height:1.75;color:var(--text-secondary);margin-bottom:14px;">For longevity specifically, the sauna evidence is compelling. Regular sauna use — four to seven times per week at 80–90°C for 15–30 minutes — has been associated in Finnish population studies with a 65 percent reduction in Alzheimer's risk and a 66 percent reduction in dementia risk compared with once-weekly use. The mechanism appears to involve both cardiovascular conditioning (sauna mimics moderate aerobic exercise) and direct heat shock protein activation in brain tissue.</p>
+      <p style="font-size:14px;line-height:1.75;color:var(--text-secondary);margin-bottom:0;"><strong style="color:var(--teal)">This week's protocol:</strong> If you have sauna access — use it after your resistance training session, 15–20 minutes at the highest comfortable temperature. If you don't — end your morning shower with 60–90 seconds of cold water, and add a 10-minute Wim Hof breathing session on waking. These are the accessible entry points to the same adaptive stress response.</p>
+    </div>
+  </div>
+
+  <!-- 5. TRACK IT -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">📲</span>
+      <span class="nl-section-label lav">Track It</span>
+    </div>
+    <div class="nl-box nl-box-track">
+      <div class="nl-box-label">Longevity — the metrics that matter over years, not days</div>
+      <p>The longevity pillar requires a different relationship with wearable data than other pillars — less about daily fluctuations, more about long-term trends. The two metrics worth tracking consistently over months are <strong>resting heart rate</strong> (a proxy for cardiovascular efficiency and autonomic nervous system health — should trend downward as fitness improves) and <strong>VO₂ max estimate</strong> (the single strongest longevity biomarker available from a consumer device). Both Garmin and Apple Watch provide VO₂ max estimates; Garmin's algorithm is considered more accurate for women.</p>
+      <p>A secondary metric worth starting now: <strong>sleep consistency</strong> (not just duration — the variance in your sleep timing across the week). Irregular sleep timing, even with adequate total hours, is independently associated with poorer cognitive outcomes. Your Oura readiness score is a practical proxy for this.</p>
+      <div class="nl-devices">
+        <span class="nl-device-pill">Garmin — VO₂ max + HRV</span>
+        <span class="nl-device-pill">Apple Watch — cardio fitness trend</span>
+        <span class="nl-device-pill">Oura Ring — sleep consistency</span>
+        <span class="nl-device-pill">WHOOP — long-term recovery trend</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. PLATE & PROTOCOL -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">🍽️</span>
+      <span class="nl-section-label muted">Plate &amp; Protocol</span>
+    </div>
+    <div class="nl-box nl-box-plate">
+      <div class="nl-box-label">This week: the one additional habit — dental hygiene</div>
+      <p>Issue 03 established the anti-inflammatory plate formula and the overnight eating window. This week, add one habit to that foundation: upgrade your dental hygiene protocol. Given the gum disease–Alzheimer's connection, this is not a minor lifestyle footnote — it belongs in the same conversation as diet and sleep.</p>
+      <p><strong>The protocol:</strong> Brush twice daily with a fluoride toothpaste, floss once daily (water flossers are equally effective and more tolerated), and book a dental clean within the next three months if you haven't had one recently. If you have active gum disease, treating it is, by available evidence, a legitimate part of your brain health strategy.</p>
+    </div>
+  </div>
+
+  <!-- 7. MOVE -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">🏋️</span>
+      <span class="nl-section-label plum">Move Like You Mean It</span>
+    </div>
+    <div class="nl-box nl-box-move">
+      <div class="nl-box-label">The longevity case for physical activity — synthesised</div>
+      <p>Physical inactivity sits on the Lancet Commission's list as a later-life risk factor, but the evidence from Issue 02 shows that the window of maximum impact is earlier — in the decade before and during perimenopause. Resistance training addresses three of the 14 modifiable risk factors simultaneously: physical inactivity, obesity (through metabolic effects), and diabetes prevention (through insulin sensitivity). No pharmaceutical intervention addresses three risk factors in one protocol.</p>
+      <p><strong>This week:</strong> Your two resistance sessions are already scheduled from Issue 02. Add one intentional social element to your movement this week — a walk with someone, a class, a group session. Physical activity that happens in a social context delivers the movement benefit and the social connection benefit simultaneously, addressing two of the 14 factors in a single hour.</p>
+    </div>
+  </div>
+
+  <!-- 8. CYCLE 1 RECAP -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">🔁</span>
+      <span class="nl-section-label muted">Cycle 1 Complete — The Foundations</span>
+    </div>
+    <p>Six weeks, six pillars, one coherent argument. Here is what Cycle 1 established:</p>
+    <div class="recap-grid">
+      <div class="recap-card">
+        <div class="recap-num">01</div>
+        <div class="recap-text"><strong>Brain & Hormones</strong> — Perimenopause is a neurological event, not just a hormonal one. The brain changes begin in the early 40s.</div>
+      </div>
+      <div class="recap-card">
+        <div class="recap-num">02</div>
+        <div class="recap-text"><strong>Movement</strong> — Resistance training is the only stimulus for both muscle growth and new bone tissue. It is medicine, not exercise.</div>
+      </div>
+      <div class="recap-card">
+        <div class="recap-num">03</div>
+        <div class="recap-text"><strong>Nutrition</strong> — Anti-inflammatory eating is not a diet. It is a recalibration for a changed hormonal environment. Structure before restriction.</div>
+      </div>
+      <div class="recap-card">
+        <div class="recap-num">04</div>
+        <div class="recap-text"><strong>Sleep & Stress</strong> — Three hormones collapse in sequence. Evening breathing protocols and morning cold exposure reset the cortisol arc.</div>
+      </div>
+      <div class="recap-card">
+        <div class="recap-num">05</div>
+        <div class="recap-text"><strong>Supplements & Labs</strong> — Omega-3s, B vitamins, creatine, and vitamin D have evidence. Almost everything else does not. Test first.</div>
+      </div>
+      <div class="recap-card">
+        <div class="recap-num">06</div>
+        <div class="recap-text"><strong>Longevity</strong> — 45% of dementia is preventable. The interventions are the same ones covered in Issues 01–05. This is not a coincidence.</div>
+      </div>
+    </div>
+    <p style="margin-top:18px;">Cycle 2 begins next week. The topics return — but at greater depth. Issue 07 goes deeper into the neuroscience of estrogen as brain fuel. The progression continues.</p>
+  </div>
+
+  <!-- 9. WEEKLY RESET -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">✅</span>
+      <span class="nl-section-label muted">Your Weekly Reset</span>
+    </div>
+    <div class="nl-reset-list">
+      <div class="nl-reset-card">
+        <span class="nl-reset-icon">🦷</span>
+        <div>
+          <div class="nl-reset-lbl">Body</div>
+          <div class="nl-reset-text">Add one intentional social component to your physical activity this week. And book a dental appointment if you're overdue — it now belongs in your brain health protocol, not your beauty routine.</div>
+        </div>
+      </div>
+      <div class="nl-reset-card">
+        <span class="nl-reset-icon">📊</span>
+        <div>
+          <div class="nl-reset-lbl">Brain</div>
+          <div class="nl-reset-text">Look at your wearable's VO₂ max estimate and note it. This is your Cycle 1 baseline. By the end of Cycle 2 — six weeks from now — it should be trending upward if your training is consistent.</div>
+        </div>
+      </div>
+      <div class="nl-reset-card">
+        <span class="nl-reset-icon">🌱</span>
+        <div>
+          <div class="nl-reset-lbl">Mindset</div>
+          <div class="nl-reset-text">45 percent is not a small number. It means that the majority of your cognitive future is not written in your DNA — it is written in the choices you make in the next ten years. That is not a burden. It is an extraordinary amount of agency.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCE ROLL -->
+  <div class="nl-source-roll">
+    <div class="nl-source-hdr">
+      <span class="nl-source-title">📚 Sources — Issue 06</span>
+      <button class="btn-toggle-src" id="btn-sources">Hide sources</button>
+    </div>
+    <div id="source-body">
+      <div class="nl-src-list" id="src-list"></div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="nl-footer">
+  <span>Issue 06 · Cycle 1: The Foundations · Longevity Lifestyle</span>
+  <span class="next">Next → Estrogen as brain fuel — the full neuroscience (Brain &amp; Hormones · Cycle 2)</span>
+</footer>
+
+</body>
+</html>

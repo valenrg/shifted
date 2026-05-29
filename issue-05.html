@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shifted · Issue 05 · The only supplements with real clinical evidence</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ── BASE TOKENS ── */
+:root{
+  --bg-base:#0D0A14;--bg-surface:#15101F;--bg-elevated:#1D1729;--bg-overlay:#251E33;
+  --border-subtle:#2A2040;--border-default:#352850;--border-strong:#453560;
+  --text-primary:#F0EBF8;--text-secondary:#C4B8D8;--text-muted:#8A7FA0;--text-disabled:#5A5070;
+  --teal:#12AACF;--teal-light:#3EC0E0;--teal-dark:#0B7189;--teal-bg:#060E12;--teal-border:#0D2A33;
+  --cyan:#52D1DC;--cyan-light:#7ADDE6;--cyan-dark:#2BA8B4;--cyan-bg:#060E0F;--cyan-border:#0D2830;
+  --lav:#AFA2FF;--lav-light:#C8BEFF;--lav-dark:#7B6FCC;--lav-bg:#0A091A;--lav-border:#1A1840;
+  --plum:#C07FDA;--plum-light:#D4A0E8;--plum-dark:#8A50A8;--plum-bg:#0F0814;--plum-border:#281538;
+  --r-xs:3px;--r-sm:6px;--r-md:10px;--r-full:9999px;
+  --ff-display:'Bricolage Grotesque',system-ui,sans-serif;
+  --ff-body:'DM Sans',system-ui,sans-serif;
+  --ff-mono:'JetBrains Mono',monospace;
+  /* pillar accent — supps */
+  --pa:#E8A44A;--pa-light:#F0C070;--pa-dark:#B07820;--pa-bg:#120D04;--pa-border:#2A1E08;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{background:var(--bg-base);}
+body{background:var(--bg-base);color:var(--text-secondary);font-family:var(--ff-body);font-size:15px;line-height:1.8;-webkit-font-smoothing:antialiased;}
+button{cursor:pointer;font-family:var(--ff-body);border:none;background:none;}
+
+/* ── LAYOUT ── */
+.nl-wrap{max-width:700px;margin:0 auto;padding:0 24px;}
+
+/* ── MASTHEAD ── */
+.nl-head{padding:44px 24px 36px;border-bottom:1px solid var(--border-subtle);max-width:700px;margin:0 auto;}
+.nl-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:28px;}
+.nl-brand-name{font-family:var(--ff-display);font-weight:800;font-size:17px;letter-spacing:-0.3px;background:linear-gradient(90deg,var(--lav) 0%,var(--cyan) 38%,var(--teal) 62%,var(--plum) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.nl-brand-sep{color:var(--border-strong);}
+.nl-brand-meta{font-size:11px;color:var(--text-muted);font-family:var(--ff-mono);}
+.nl-tag-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px;}
+.nl-tag{display:inline-flex;align-items:center;padding:3px 10px;border-radius:var(--r-full);font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;border:1px solid var(--pa-border);background:var(--pa-bg);color:var(--pa);font-family:var(--ff-mono);}
+.nl-tag.muted{border-color:var(--border-default);background:var(--bg-elevated);color:var(--text-muted);}
+.nl-issue-title{font-family:var(--ff-display);font-size:clamp(28px,5vw,42px);font-weight:800;letter-spacing:-0.8px;line-height:1.1;color:var(--text-primary);margin-bottom:14px;}
+.nl-issue-sub{font-size:15px;color:var(--text-secondary);line-height:1.65;max-width:580px;}
+
+/* ── BODY ── */
+.nl-body{max-width:700px;margin:0 auto;padding:44px 24px 0;}
+.nl-body p{font-size:15px;line-height:1.8;color:var(--text-secondary);margin-bottom:18px;}
+.nl-body p:last-child{margin-bottom:0;}
+.nl-body p strong{color:var(--text-primary);font-weight:600;}
+
+/* ── SECTIONS ── */
+.nl-section{margin-bottom:40px;}
+.nl-section-hdr{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border-subtle);}
+.nl-section-icon{font-size:18px;}
+.nl-section-label{font-family:var(--ff-mono);font-size:10px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--pa);}
+.nl-section-label.teal{color:var(--teal);}
+.nl-section-label.lav{color:var(--lav);}
+.nl-section-label.plum{color:var(--plum);}
+.nl-section-label.muted{color:var(--text-muted);}
+
+/* ── HEADINGS ── */
+.nl-h2{font-family:var(--ff-display);font-size:22px;font-weight:700;letter-spacing:-0.4px;color:var(--text-primary);margin:0 0 16px;line-height:1.2;}
+.nl-h3{font-family:var(--ff-display);font-size:15px;font-weight:700;letter-spacing:-0.1px;color:var(--pa);margin:24px 0 8px;}
+
+/* ── BOXES ── */
+.nl-box{border-radius:var(--r-md);padding:20px 22px;margin-bottom:18px;border:1px solid;}
+.nl-box-science{background:var(--pa-bg);border-color:var(--pa-border);}
+.nl-box-expert{background:var(--bg-elevated);border-color:var(--border-default);}
+.nl-box-track{background:var(--lav-bg);border-color:var(--lav-border);}
+.nl-box-plate{background:#111006;border-color:#2A2508;}
+.nl-box-move{background:var(--plum-bg);border-color:var(--plum-border);}
+.nl-box-label{font-family:var(--ff-mono);font-size:9px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--pa);margin-bottom:12px;}
+.nl-box-track .nl-box-label{color:var(--lav);}
+.nl-box-plate .nl-box-label{color:#E8A44A;}
+.nl-box-move  .nl-box-label{color:var(--plum);}
+
+/* ── PULL QUOTE ── */
+.nl-pull{border-left:3px solid var(--pa);margin:28px 0;padding:16px 22px;background:var(--bg-elevated);border-radius:0 var(--r-sm) var(--r-sm) 0;}
+.nl-pull p{font-family:var(--ff-display);font-size:17px;font-weight:600;font-style:italic;line-height:1.6;color:var(--text-primary)!important;margin-bottom:10px!important;}
+.nl-pull cite{font-size:11px;color:var(--text-muted);font-family:var(--ff-mono);font-style:normal;}
+
+/* ── STATS ── */
+.nl-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:26px;}
+.nl-stat{background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:16px;text-align:center;}
+.nl-stat-val{font-family:var(--ff-mono);font-size:24px;font-weight:700;color:var(--pa);line-height:1;margin-bottom:6px;}
+.nl-stat-lbl{font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:4px;}
+.nl-stat-sub{font-size:11px;color:var(--text-muted);line-height:1.4;}
+
+/* ── SUPPLEMENT CARDS ── */
+.supp-stack{display:flex;flex-direction:column;gap:12px;margin:16px 0;}
+.supp-card{background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:18px 20px;border-left:3px solid var(--pa);}
+.supp-card.tier1{border-left-color:var(--pa);}
+.supp-card.tier2{border-left-color:var(--teal);}
+.supp-card.skip{border-left-color:var(--border-strong);opacity:.75;}
+.supp-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px;flex-wrap:wrap;}
+.supp-name{font-family:var(--ff-display);font-size:15px;font-weight:700;color:var(--text-primary);}
+.supp-badge{font-family:var(--ff-mono);font-size:9px;font-weight:700;padding:3px 8px;border-radius:var(--r-full);white-space:nowrap;}
+.badge-high{background:var(--pa-bg);color:var(--pa);border:1px solid var(--pa-border);}
+.badge-mod{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-border);}
+.badge-low{background:var(--bg-elevated);color:var(--text-muted);border:1px solid var(--border-default);}
+.supp-why{font-size:13.5px;color:var(--text-secondary);line-height:1.6;margin-bottom:10px;}
+.supp-dose-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:8px;}
+.supp-dose{background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:var(--r-sm);padding:10px 12px;}
+.supp-dose-lbl{font-family:var(--ff-mono);font-size:9px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;}
+.supp-dose-val{font-size:12.5px;color:var(--text-primary);}
+.supp-warn{margin-top:8px;font-size:11.5px;color:var(--text-muted);font-style:italic;line-height:1.5;}
+
+/* ── WEARABLES ── */
+.nl-devices{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;}
+.nl-device-pill{font-family:var(--ff-mono);font-size:10px;font-weight:600;padding:3px 10px;border-radius:var(--r-full);background:var(--lav-bg);color:var(--lav);border:1px solid var(--lav-border);}
+
+/* ── RESET ── */
+.nl-reset-list{display:flex;flex-direction:column;gap:8px;}
+.nl-reset-card{display:flex;gap:14px;align-items:flex-start;background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--r-sm);padding:14px 16px;}
+.nl-reset-icon{font-size:18px;flex-shrink:0;margin-top:2px;}
+.nl-reset-lbl{font-size:10px;font-weight:700;color:var(--pa);text-transform:uppercase;letter-spacing:.8px;font-family:var(--ff-mono);margin-bottom:4px;}
+.nl-reset-text{font-size:13.5px;color:var(--text-secondary);line-height:1.6;}
+
+/* ── DIVIDER ── */
+.nl-divider{height:1px;background:var(--border-subtle);margin:36px 0;}
+
+/* ── SOURCE ROLL ── */
+.nl-source-roll{margin-top:48px;padding-top:28px;border-top:1px solid var(--border-subtle);}
+.nl-source-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}
+.nl-source-title{font-family:var(--ff-mono);font-size:10px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--pa);}
+.btn-toggle-src{background:var(--bg-elevated);border:1px solid var(--border-default);border-radius:var(--r-full);padding:3px 10px;font-size:11px;color:var(--text-muted);font-family:var(--ff-mono);}
+.nl-src-list{display:flex;flex-direction:column;gap:8px;}
+.nl-src-item{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:var(--r-sm);border:1px solid var(--border-subtle);background:var(--bg-surface);}
+.nl-src-code{font-family:var(--ff-mono);font-size:9px;font-weight:700;padding:2px 7px;border-radius:var(--r-xs);color:#050F14;flex-shrink:0;margin-top:2px;white-space:nowrap;}
+.nl-src-full{font-size:12px;color:var(--text-secondary);line-height:1.5;margin-bottom:4px;}
+.nl-src-audio{font-size:11px;color:var(--text-muted);font-style:italic;font-family:var(--ff-mono);}
+
+/* ── FOOTER ── */
+.nl-footer{max-width:700px;margin:44px auto 0;padding:20px 24px 60px;border-top:1px solid var(--border-subtle);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.nl-footer span{font-family:var(--ff-mono);font-size:10px;color:var(--text-muted);}
+.nl-footer .next{font-style:italic;color:var(--pa);}
+
+@media(max-width:480px){
+  .nl-stats{grid-template-columns:repeat(2,1fr);}
+  .supp-dose-row{grid-template-columns:1fr;}
+}
+</style>
+
+<script>
+const SOURCES = {
+  XX:       { code:"XX",        color:"#AFA2FF", short:"The XX Brain",               full:"Dr. Lisa Mosconi, The XX Brain: The Groundbreaking Science Empowering Women to Maximize Cognitive Health and Prevent Alzheimer's Disease (Avery/Penguin Random House, 2020)", spoken:"Dr. Lisa Mosconi in The XX Brain" },
+  TRAIN:    { code:"TRAIN",     color:"#52D1DC", short:"How to Train Guide",          full:"How to Train According to the Experts: A Guide on Getting Strong, Building Muscle, and Elevating Fitness (HowToTrainGuide.com, 2024)",                                           spoken:"the How to Train According to the Experts guide" },
+  HAVER_NM: { code:"HAVER·NM",  color:"#E8A44A", short:"The New Menopause",           full:"Dr. Mary Claire Haver, The New Menopause: Navigating Your Path Through Hormonal Change with Purpose, Power, and Facts (Rodale Books, 2024)",                                     spoken:"Dr. Mary Claire Haver in The New Menopause" },
+  HAVER_HL: { code:"HAVER·HL",  color:"#12AACF", short:"Haver / Huberman Lab",        full:"Dr. Mary Claire Haver on the Huberman Lab Podcast, 'How to Navigate Menopause & Perimenopause for Maximum Health & Vitality,' June 3, 2024",                                    spoken:"Dr. Mary Claire Haver on the Huberman Lab podcast, June 2024" },
+  GOTT:     { code:"GOTT·HL",   color:"#12AACF", short:"Gottfried / Huberman Lab",    full:"Dr. Sara Gottfried on the Huberman Lab Podcast, 'How to Optimize Female Hormone Health for Vitality & Longevity,' January 30, 2023",                                            spoken:"Dr. Sara Gottfried on the Huberman Lab podcast, January 2023" },
+  ROAR:     { code:"ROAR",      color:"#C07FDA", short:"ROAR",                        full:"Dr. Stacy Sims, ROAR: Match Your Food and Fitness to Your Unique Female Physiology for Optimum Performance, Great Health, and a Strong Body for Life (Rodale Books, revised edition)", spoken:"Dr. Stacy Sims in ROAR" },
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+  var btnSrc  = document.getElementById('btn-sources');
+  var srcBody = document.getElementById('source-body');
+  var srcList = document.getElementById('src-list');
+  if (btnSrc && srcBody && srcList) {
+    Object.values(SOURCES).forEach(function(s) {
+      var item = document.createElement('div');
+      item.className = 'nl-src-item';
+      item.innerHTML =
+        '<span class="nl-src-code" style="background:' + s.color + '">' + s.code + '</span>' +
+        '<div><div class="nl-src-full">' + s.full + '</div>' +
+        '<div class="nl-src-audio" style="color:' + s.color + '">' + s.spoken + '</div></div>';
+      srcList.appendChild(item);
+    });
+    btnSrc.addEventListener('click', function() {
+      var hidden = srcBody.style.display === 'none';
+      srcBody.style.display = hidden ? 'block' : 'none';
+      btnSrc.textContent = hidden ? 'Hide sources' : 'Show sources';
+    });
+  }
+});
+</script>
+</head>
+<body class="issue-supps">
+
+<style>
+.gh-nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(13,10,20,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #221B30;
+  padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  height:44px;gap:16px;
+}
+.gh-nav a{text-decoration:none;}
+.gh-brand{
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:15px;
+  background:linear-gradient(90deg,#AFA2FF 0%,#52D1DC 38%,#12AACF 62%,#C07FDA 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.gh-meta{font-family:'JetBrains Mono',monospace;font-size:10px;color:#5E5A76;}
+
+.gh-nav-btn{
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;
+  color:#9C97B4;padding:5px 10px;border-radius:6px;
+  border:1px solid transparent;transition:all .12s;white-space:nowrap;
+}
+.gh-nav-btn:hover{color:#F2EEF8;border-color:#2E2542;background:#1D1729;}
+.gh-nav-btn.disabled{color:#3F3B53;pointer-events:none;}
+@media(max-width:480px){.gh-meta{display:none;}}
+</style>
+
+<nav class="gh-nav">
+  <a href="index.html" class="gh-brand">shifted</a>
+  <span class="gh-meta">Issue 05 · Supplements & Labs · Cycle 1</span>
+  <a href="index.html" class="gh-nav-btn">← All issues</a>
+</nav>
+
+<!-- MASTHEAD -->
+<header class="nl-head">
+  <div class="nl-brand-row">
+    <span class="nl-brand-name">shifted</span>
+    <span class="nl-brand-sep">/</span>
+    <span class="nl-brand-meta">Issue 05 · Week 5 · Cycle 1</span>
+  </div>
+  <div class="nl-tag-row">
+    <span class="nl-tag">Supplements &amp; Labs</span>
+    <span class="nl-tag muted">~15 min read</span>
+    <span class="nl-tag muted">Cycle 1: The Foundations</span>
+  </div>
+  <h1 class="nl-issue-title">The only supplements with real clinical evidence</h1>
+  <p class="nl-issue-sub">The supplement industry is a $50 billion noise machine. This issue cuts through it — three supplements with the strongest evidence for women in midlife, one emerging contender, and a clear list of what to stop spending money on.</p>
+</header>
+
+<!-- BODY -->
+<main class="nl-body">
+
+  <p>Walk into any health food store and you'll find shelves of supplements marketed specifically at women in midlife: hormone support blends, menopause formulas, brain boosters, cortisol managers. Most of them have one thing in common: limited or no clinical evidence in humans that they do what the label claims.</p>
+  <p>This issue applies a single filter: what does the peer-reviewed literature actually support? The Global Council on Brain Health — an international collaboration of scientists, physicians, and policy experts convened by AARP — evaluated the supplement market and concluded that for brain health specifically, only a small number of supplements have sufficient evidence to recommend. Dr. Lisa Mosconi's clinical framework in The XX Brain maps directly onto that verdict. So does the emerging research on creatine. Here is what survives the filter.</p>
+
+  <div class="nl-divider"></div>
+
+  <!-- 1. SCIENCE -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">🔬</span>
+      <span class="nl-section-label">This Week's Science</span>
+    </div>
+    <div class="nl-box nl-box-science">
+      <p>In randomised, double-blind, placebo-controlled trials of patients with mild cognitive impairment, high-dose B vitamin supplementation over a two-year period not only maintained memory performance — it simultaneously reduced the rate of brain shrinkage as measured by MRI scans. The effect was most pronounced in participants who also had elevated homocysteine, a blood marker that rises with B vitamin deficiency and is independently associated with dementia risk.</p>
+      <p>The critical nuance: B vitamins work significantly better when taken alongside omega-3 fatty acids. A 2015 study found that B vitamins had little effect on brain atrophy in participants with low omega-3 levels — and a dramatic effect in those with adequate omega-3 levels. The two are synergistic, not interchangeable.</p>
+    </div>
+  </div>
+
+  <!-- 2. DEEP DIVE -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">💡</span>
+      <span class="nl-section-label">The Deep Dive</span>
+    </div>
+    <h2 class="nl-h2">What the research actually supports — and what it doesn't</h2>
+
+    <p>The principle that governs this issue: food first, supplements second. The evidence for obtaining nutrients from whole foods is consistently stronger than the evidence for supplements delivering equivalent benefit. Supplements correct insufficiencies; they don't replace dietary patterns. With that framing established, here is the stack that holds up to scrutiny.</p>
+
+    <div class="supp-stack">
+
+      <!-- OMEGA-3 -->
+      <div class="supp-card tier1">
+        <div class="supp-header">
+          <span class="supp-name">Omega-3 Fatty Acids (DHA + EPA)</span>
+          <span class="supp-badge badge-high">Highest evidence</span>
+        </div>
+        <p class="supp-why">For women with low omega-3 levels — which describes most people eating a Western diet — supplementation is associated with reduced brain shrinkage, better memory, and a lower risk of dementia, particularly in APOE-4 carriers. Omega-3s also reduce inflammation, support cardiovascular health, and counteract symptoms of low mood and mild depression — especially in women experiencing hormonal changes. Nine large-scale epidemiological studies have concluded that regular consumption of omega-3-rich fish is critical for brain health, and that middle-aged and older people who consumed fish once or twice a week reduced their risk of Alzheimer's by up to 70 percent.</p>
+        <p class="supp-why">The Western diet contains 20–30 times more omega-6 (pro-inflammatory) than omega-3 (anti-inflammatory). The target ratio is 2:1. Supplementation is often the most practical way to correct this imbalance — but quality matters. Look for high-purity fish oil, molecularly distilled, with the DHA and EPA doses listed clearly.</p>
+        <div class="supp-dose-row">
+          <div class="supp-dose">
+            <div class="supp-dose-lbl">Fish eaters</div>
+            <div class="supp-dose-val">500–800 mg DHA + 300–500 mg EPA daily. Higher end if over 60.</div>
+          </div>
+          <div class="supp-dose">
+            <div class="supp-dose-lbl">Plant-based / vegan</div>
+            <div class="supp-dose-val">2,000 mg DHA from high-purity algae oil daily.</div>
+          </div>
+          <div class="supp-dose">
+            <div class="supp-dose-lbl">APOE-4 carriers</div>
+            <div class="supp-dose-val">800 mg–1.8 g DHA daily from fish oil or algae oil.</div>
+          </div>
+        </div>
+        <p class="supp-warn">⚠️ Moderate interaction with blood-thinning medications (warfarin, heparin). Discuss with your doctor if you are anticoagulated.</p>
+      </div>
+
+      <!-- B VITAMINS -->
+      <div class="supp-card tier1">
+        <div class="supp-header">
+          <span class="supp-name">B Vitamins (B6, B12, Folate)</span>
+          <span class="supp-badge badge-high">Highest evidence</span>
+        </div>
+        <p class="supp-why">B vitamins are critical for a healthy nervous system, primarily through their role in regulating homocysteine — a toxic amino acid that rises when B vitamins are deficient and is directly associated with brain shrinkage and dementia risk. B12 absorption naturally declines with age, and is further reduced by common medications including metformin (diabetes), proton pump inhibitors (acid reflux), and hormonal contraceptives. If you are over 50, have been on any of these medications, or follow a vegan or vegetarian diet, testing your B12 and homocysteine levels is one of the most high-value labs you can run.</p>
+        <div class="supp-dose-row">
+          <div class="supp-dose">
+            <div class="supp-dose-lbl">Standard protocol</div>
+            <div class="supp-dose-val">B-complex containing: 500 mcg B12 · 600–800 mcg folate · 10–50 mg B6. Take daily with food.</div>
+          </div>
+          <div class="supp-dose">
+            <div class="supp-dose-lbl">If levels don't improve</div>
+            <div class="supp-dose-val">Switch to methylated forms: methylcobalamin (B12) and methylfolate. Better absorbed by some individuals.</div>
+          </div>
+        </div>
+        <p class="supp-warn">⚠️ B vitamins work synergistically with omega-3s. Taking both together produces significantly greater benefit than either alone — particularly for brain atrophy reduction.</p>
+      </div>
+
+      <!-- CREATINE -->
+      <div class="supp-card tier1">
+        <div class="supp-header">
+          <span class="supp-name">Creatine Monohydrate</span>
+          <span class="supp-badge badge-high">Tier 1 — muscle, bone + emerging brain evidence</span>
+        </div>
+        <p class="supp-why">Creatine is the most extensively researched performance supplement in existence, and its relevance for women in midlife extends well beyond the gym. Both Dr. Stuart Phillips and Dr. Layne Norton place it on their "Tier 1" list — not just for muscle, but increasingly for brain health. Creatine supplementation can increase brain creatine stores by approximately 5–10% within a few weeks, with systematic reviews showing improvements in memory, processing speed, attention, and reduced mental fatigue — particularly relevant under conditions of metabolic stress, which perimenopause qualitatively resembles. In one study, women supplementing with 5g of creatine per day experienced close to an hour more sleep on exercise days compared to a control group — a finding that connects the Movement and Sleep pillars directly.</p>
+        <p class="supp-why">For bone health specifically — which we covered in Issue 02 — creatine combined with resistance training prevents bone loss at the hip and spine in postmenopausal women, the sites most vulnerable to osteoporosis fractures. No loading phase is necessary.</p>
+        <div class="supp-dose-row">
+          <div class="supp-dose">
+            <div class="supp-dose-lbl">Muscle + strength</div>
+            <div class="supp-dose-val">3–5 g/day. Saturates muscle stores in ~3 weeks. Take daily — not only on training days.</div>
+          </div>
+          <div class="supp-dose">
+            <div class="supp-dose-lbl">Bone health</div>
+            <div class="supp-dose-val">8+ g/day alongside resistance training. Must be combined with mechanical load to protect bone.</div>
+          </div>
+          <div class="supp-dose">
+            <div class="supp-dose-lbl">Cognitive performance</div>
+            <div class="supp-dose-val">20 g/day increases brain creatine uptake. Relevant under conditions of sleep deprivation or high cognitive load.</div>
+          </div>
+        </div>
+        <p class="supp-warn">Safety note: creatine does not cause kidney damage in healthy people. Over 40 years of data and thousands of studies show no adverse renal effects at standard doses. The hair loss claim originates from a single unreplicated study that didn't even measure hair loss.</p>
+      </div>
+
+      <!-- VITAMINS C & E -->
+      <div class="supp-card tier2">
+        <div class="supp-header">
+          <span class="supp-name">Vitamins C and E</span>
+          <span class="supp-badge badge-mod">Strong evidence · particularly post-menopause</span>
+        </div>
+        <p class="supp-why">Both vitamins C and E are potent antioxidants that boost immune function and have been associated with a reduced risk of dementia. They are particularly important for peri- and post-menopausal women because estrogen itself has antioxidant properties — when it declines, the brain's defence against oxidative stress is weakened. Vitamins C and E partially compensate for this loss. They're also indicated for smokers, ex-smokers, women with elevated CRP (an inflammation marker), and those regularly exposed to environmental toxins.</p>
+        <div class="supp-dose-row">
+          <div class="supp-dose">
+            <div class="supp-dose-lbl">Vitamin C</div>
+            <div class="supp-dose-val">150–200 mg daily for women over 50 or in perimenopause. Food sources first: bell peppers, citrus, broccoli.</div>
+          </div>
+          <div class="supp-dose">
+            <div class="supp-dose-lbl">Vitamin E</div>
+            <div class="supp-dose-val">Prefer food sources: almonds, sunflower seeds, avocado. Supplement only if dietary intake is consistently low.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <h3 class="nl-h3" style="color:var(--text-muted)">What doesn't make the cut</h3>
+    <p>Ginseng, turmeric, and the majority of so-called nootropic supplements have not shown consistent efficacy in clinical trials and are not recommended. Ginkgo biloba has some evidence for attention and memory in patients with reduced cerebral blood flow, but carries significant contraindications and interactions. The global supplement market is full of products that have been studied in vitro (in a dish) or in animals but never in humans at scale — marketing that sounds scientific without the trials to back it. If a supplement isn't in this list, the absence is intentional.</p>
+
+    <div class="nl-pull">
+      <p>"If I had to build my Mount Rushmore of supplements, it is very clearly creatine monohydrate, caffeine, and whey protein. For creatine especially, I just can't see an argument at this point not to take it — because of the cognitive benefits alone."</p>
+      <cite>— Dr. Layne Norton, cited in How to Train According to the Experts</cite>
+    </div>
+  </div>
+
+  <!-- 3. FROM THE EXPERTS -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">🎙️</span>
+      <span class="nl-section-label">From the Experts</span>
+    </div>
+    <div class="nl-box nl-box-expert">
+      <div class="nl-box-label">Dr. Haver + Dr. Gottfried — what they personally take</div>
+      <p>Dr. Mary Claire Haver's clinical supplement framework for midlife women centres on correcting the deficiencies most commonly seen in her practice: omega-3 index (most people are low), vitamin D (epidemic deficiency, particularly in northern latitudes and in women with darker skin), magnesium (depleted by stress, alcohol, and common medications), and creatine — which she began recommending after reviewing the bone and muscle evidence. She emphasises that supplementation should follow testing, not precede it: know your omega-3 index, your vitamin D level, your B12, and your homocysteine before investing in a stack.</p>
+      <p>Dr. Sara Gottfried on the Huberman Lab adds the microbiome layer: high-quality probiotics with clinical evidence (specifically Lactobacillus and Bifidobacterium strains) support estrogen metabolism through the estrobolome, the gut bacterial community that processes and recycles estrogen. A disrupted estrobolome can cause estrogen levels to fluctuate erratically even in the presence of adequate hormonal production — making gut support a legitimate component of any hormonal health strategy, though one that is best delivered through fermented foods before supplements.</p>
+    </div>
+  </div>
+
+  <!-- 4. TRACK IT -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">📲</span>
+      <span class="nl-section-label lav">Track It</span>
+    </div>
+    <div class="nl-box nl-box-track">
+      <div class="nl-box-label">Supplements &amp; Labs — measuring what you're correcting</div>
+      <p>The most actionable wearable insight for this pillar is the continuous glucose monitor (CGM). A CGM worn for two weeks reveals more about your metabolic response to food, stress, sleep, and supplements than any static lab panel — showing in real time how blood sugar responds to meals, exercise, and even breathing patterns. This is particularly relevant for women in perimenopause because, as covered in Issue 03, insulin resistance rises significantly with estrogen decline. A CGM makes that invisible process visible.</p>
+      <p>For supplement tracking specifically: your Oura Ring or WHOOP will show you whether omega-3 supplementation and magnesium are improving your HRV and recovery scores over 4–6 weeks — a practical proxy for nervous system resilience that complements lab testing.</p>
+      <div class="nl-devices">
+        <span class="nl-device-pill">Levels — CGM integration</span>
+        <span class="nl-device-pill">Dexcom G7 — CGM hardware</span>
+        <span class="nl-device-pill">Oura Ring — HRV trends</span>
+        <span class="nl-device-pill">WHOOP — recovery baseline</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. PLATE & PROTOCOL -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">🍽️</span>
+      <span class="nl-section-label muted">Plate &amp; Protocol</span>
+    </div>
+    <div class="nl-box nl-box-plate">
+      <div class="nl-box-label">The labs to request — before you spend on supplements</div>
+      <p>Supplementing without testing is guesswork. These are the five most high-value blood markers for women in midlife — request them together as a panel and you'll know exactly where your deficiencies are before spending a pound on supplements.</p>
+      <div class="supp-dose-row" style="margin-top:14px;">
+        <div class="supp-dose"><div class="supp-dose-lbl">Omega-3 index</div><div class="supp-dose-val">Target: above 8%. Below 4% is deficient. Shows your actual omega-3 status, not just intake.</div></div>
+        <div class="supp-dose"><div class="supp-dose-lbl">Homocysteine</div><div class="supp-dose-val">Target: below 10 µmol/L. Elevated = B vitamin deficiency + raised dementia risk.</div></div>
+        <div class="supp-dose"><div class="supp-dose-lbl">Vitamin D (25-OH)</div><div class="supp-dose-val">Target: 50–80 ng/mL. Most women test below 30. Critical for bone, immunity, and mood.</div></div>
+        <div class="supp-dose"><div class="supp-dose-lbl">Vitamin B12</div><div class="supp-dose-val">Target: above 400 pg/mL. Absorption declines with age and common medications.</div></div>
+        <div class="supp-dose"><div class="supp-dose-lbl">sdLDL (small dense LDL)</div><div class="supp-dose-val">Dr. Haver's perimenopause-specific marker. Rises with insulin resistance and estrogen decline. Standard lipid panels miss it.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. MOVE -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">🏋️</span>
+      <span class="nl-section-label plum">Move Like You Mean It</span>
+    </div>
+    <div class="nl-box nl-box-move">
+      <div class="nl-box-label">Creatine + resistance training: why both are required</div>
+      <p>Creatine's bone and brain benefits are significantly amplified by mechanical loading. At the bone level, creatine activates osteoblast activity — but only in combination with the strain that resistance training imposes on the skeleton. Taking creatine without training will not protect your bones. At the muscle level, the combination of creatine and resistance training produces superior lean mass gains compared to either alone — particularly relevant for postmenopausal women experiencing anabolic resistance.</p>
+      <p>This week's protocol: begin creatine at 3–5g per day (mix into water, juice, or a protein shake — flavour is neutral). Take it at the same time every day regardless of whether you train. Pair with the two resistance sessions from Issue 02's framework and track your sleep score on training days — that's where creatine's sleep benefit is most likely to show up.</p>
+    </div>
+  </div>
+
+  <!-- 7. RESET -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">✅</span>
+      <span class="nl-section-label muted">Your Weekly Reset</span>
+    </div>
+    <div class="nl-reset-list">
+      <div class="nl-reset-card">
+        <span class="nl-reset-icon">💊</span>
+        <div>
+          <div class="nl-reset-lbl">Body</div>
+          <div class="nl-reset-text">Start creatine at 3–5g per day — every day, not just training days. If you're already taking omega-3s, check the label: you want 500–800 mg DHA + 300–500 mg EPA per serving. If you're not taking either, start with omega-3s first.</div>
+        </div>
+      </div>
+      <div class="nl-reset-card">
+        <span class="nl-reset-icon">🧪</span>
+        <div>
+          <div class="nl-reset-lbl">Brain</div>
+          <div class="nl-reset-text">Book the lab panel. All five markers — omega-3 index, homocysteine, vitamin D, B12, sdLDL — can be requested through your GP or ordered directly through private lab services. Know your numbers before spending on a supplement stack.</div>
+        </div>
+      </div>
+      <div class="nl-reset-card">
+        <span class="nl-reset-icon">🌱</span>
+        <div>
+          <div class="nl-reset-lbl">Mindset</div>
+          <div class="nl-reset-text">Audit your current supplements. For anything not on this list, ask one question: what is the randomised controlled trial evidence in humans? If you can't find it, that's the answer. Less is more when the few things you take actually work.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCE ROLL -->
+  <div class="nl-source-roll">
+    <div class="nl-source-hdr">
+      <span class="nl-source-title">📚 Sources — Issue 05</span>
+      <button class="btn-toggle-src" id="btn-sources">Hide sources</button>
+    </div>
+    <div id="source-body">
+      <div class="nl-src-list" id="src-list"></div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="nl-footer">
+  <span>Issue 05 · Cycle 1: The Foundations · Supplements &amp; Labs</span>
+  <span class="next">Next → The 1/3 of Alzheimer's cases lifestyle can prevent (Longevity)</span>
+</footer>
+
+</body>
+</html>

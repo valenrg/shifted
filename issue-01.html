@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shifted · Issue 01 · What really happens to your brain in perimenopause</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* Backgrounds — aubergine hue infused from #390040 */
+  --bg-base:     #0D0A14;
+  --bg-surface:  #15101F;
+  --bg-elevated: #1D1729;
+  --bg-hover:    #251F33;
+  --border-subtle:  #221B30;
+  --border-default: #2E2542;
+  --border-strong:  #3E3358;
+
+  /* Text */
+  --text-primary:   #F2EEF8;
+  --text-secondary: #9C97B4;
+  --text-muted:     #5E5A76;
+  --text-faint:     #3F3B53;
+
+  /* Teal — Primary */
+  --teal:        #12AACF;
+  --teal-light:  #3EC0E0;
+  --teal-dark:   #0B7189;
+  --teal-bg:     #061820;
+  --teal-border: #0C3E50;
+
+  /* Cyan — Habits & Sleep */
+  --cyan:        #52D1DC;
+  --cyan-light:  #7EDEE7;
+  --cyan-dark:   #2FA8B4;
+  --cyan-bg:     #04191C;
+  --cyan-border: #0A3438;
+
+  /* Lavender — Mood & Cognition */
+  --lav:         #AFA2FF;
+  --lav-light:   #C8BFFF;
+  --lav-dark:    #8070E8;
+  --lav-bg:      #100D24;
+  --lav-border:  #201860;
+
+  /* Plum — Vasomotor */
+  --plum:        #C07FDA;
+  --plum-light:  #D4A0E8;
+  --plum-dark:   #613F75;
+  --plum-bg:     #180E22;
+  --plum-border: #361848;
+
+  /* Accent — toggled via Tweaks */
+  --accent:        var(--teal);
+  --accent-light:  var(--teal-light);
+  --accent-bg:     var(--teal-bg);
+  --accent-border: var(--teal-border);
+  --accent-ink:    #050F14;
+
+  --ff-display: 'Bricolage Grotesque', sans-serif;
+  --ff-body:    'DM Sans', sans-serif;
+  --ff-mono:    'JetBrains Mono', ui-monospace, monospace;
+  --r-xs: 4px; --r-sm: 8px; --r-md: 12px;
+  --r-lg: 16px; --r-xl: 24px; --r-full: 9999px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { background: var(--bg-base); color: var(--text-primary); font-family: var(--ff-body); }
+body { min-height: 100vh; font-size: 14px; line-height: 1.5; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-strong); }
+
+input, textarea, select, button { font-family: inherit; color: inherit; outline: none; }
+input::placeholder, textarea::placeholder { color: var(--text-muted); }
+button { cursor: pointer; background: none; border: none; color: inherit; }
+
+.mono { font-family: var(--ff-mono); font-feature-settings: "tnum"; }
+.tnum { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+.display { font-family: var(--ff-display); letter-spacing: -0.01em; }
+
+.fade-in { opacity: 1; }
+@keyframes fadeUp { 0% { opacity: 0.001; transform: translateY(8px); } 100% { opacity: 1; transform: translateY(0); } }
+
+@keyframes pulse-ring {
+  0% { transform: scale(.8); opacity: .8; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+@keyframes check-pop {
+  0% { transform: scale(.4); opacity: 0; }
+  50% { transform: scale(1.18); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes streak-tick {
+  0% { transform: translateY(6px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* App scaffold */
+.app {
+  display: grid;
+  grid-template-columns: 232px 1fr;
+  min-height: 100vh;
+  max-width: 1640px;
+  margin: 0 auto;
+}
+
+.sidebar {
+  border-right: 1px solid var(--border-subtle);
+  padding: 22px 14px 20px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-base);
+}
+
+.main {
+  min-width: 0;
+  padding: 0 36px 80px;
+}
+
+.row { display: flex; align-items: center; }
+.between { justify-content: space-between; }
+.grow { flex: 1; min-width: 0; }
+
+/* Reusable */
+.section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.divider { height: 1px; background: var(--border-subtle); }
+
+/* Sidebar nav */
+.brand {
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 4px 22px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 14px;
+}
+.brand-mark {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: 26px;
+  letter-spacing: -0.5px;
+  line-height: 1;
+  background: linear-gradient(90deg, var(--lav) 0%, var(--cyan) 38%, var(--teal) 62%, var(--plum) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.brand-sub  { font-size: 9px; color: var(--text-muted); letter-spacing: 1.4px; text-transform: uppercase; margin-top: 4px; }
+
+.nav-section {
+  font-size: 9px; font-weight: 700; letter-spacing: 1.4px;
+  text-transform: uppercase; color: var(--text-faint);
+  padding: 14px 12px 6px;
+}
+.nav-btn {
+  display: flex; align-items: center; gap: 11px;
+  padding: 9px 12px; border-radius: 8px;
+  font-size: 13px; color: var(--text-secondary); font-weight: 500;
+  width: 100%; text-align: left;
+  transition: background .12s, color .12s;
+}
+.nav-btn:hover { background: var(--bg-surface); color: var(--text-primary); }
+.nav-btn.active {
+  background: var(--accent-bg);
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent-border);
+}
+.nav-btn .nb-count {
+  margin-left: auto; font-size: 10px;
+  background: var(--bg-elevated); border: 1px solid var(--border-default);
+  padding: 1px 7px; border-radius: 99px; color: var(--text-muted);
+  font-family: var(--ff-mono); font-weight: 600;
+}
+.nav-btn.active .nb-count { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.nav-foot {
+  margin-top: auto; padding: 14px 10px 0;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 10px; color: var(--text-muted); line-height: 1.6;
+}
+
+/* Page header */
+.page-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  padding: 28px 0 22px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 26px;
+  gap: 24px;
+}
+.page-title { font-family: var(--ff-display); font-size: 32px; font-weight: 800; letter-spacing: -0.6px; line-height: 1; }
+.page-sub   { font-size: 13px; color: var(--text-secondary); margin-top: 8px; max-width: 580px; line-height: 1.55; }
+.page-meta  { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+
+/* Card */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-lg);
+  padding: 20px;
+}
+.card-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 16px;
+}
+.card-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--text-secondary);
+}
+.card-meta { margin-left: auto; font-size: 11px; color: var(--text-muted); font-family: var(--ff-mono); }
+
+/* Pills / chips */
+.pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 9px; border-radius: 99px;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.4px;
+  border: 1px solid var(--border-default); background: var(--bg-elevated);
+  color: var(--text-secondary);
+}
+.pill-dot { width: 6px; height: 6px; border-radius: 50%; }
+.pill.plum  { background: var(--plum-bg);  border-color: var(--plum-border);  color: var(--plum); }
+.pill.lav   { background: var(--lav-bg);   border-color: var(--lav-border);   color: var(--lav); }
+.pill.cyan  { background: var(--cyan-bg);  border-color: var(--cyan-border);  color: var(--cyan); }
+.pill.teal  { background: var(--teal-bg);  border-color: var(--teal-border);  color: var(--teal); }
+.pill.accent{ background: var(--accent-bg);border-color: var(--accent-border);color: var(--accent); }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 14px; border-radius: 8px;
+  font-size: 13px; font-weight: 600;
+  border: 1px solid transparent;
+  transition: background .12s, border-color .12s, color .12s, transform .08s;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { background: var(--accent-light); }
+.btn-ghost { background: var(--bg-elevated); border-color: var(--border-default); color: var(--text-primary); }
+.btn-ghost:hover { background: var(--bg-hover); border-color: var(--border-strong); }
+.btn-quiet { background: transparent; color: var(--text-secondary); border-color: var(--border-subtle); }
+.btn-quiet:hover { background: var(--bg-surface); color: var(--text-primary); }
+.btn-sm { padding: 5px 10px; font-size: 11.5px; gap: 5px; }
+
+/* KPI stat */
+.kpi {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-md);
+  padding: 16px 18px;
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+}
+.kpi-label { font-size: 9.5px; font-weight: 700; letter-spacing: 0.9px; text-transform: uppercase; color: var(--text-muted); line-height: 1.3; min-height: 12px; }
+.kpi-value { font-family: var(--ff-display); font-weight: 800; font-size: 28px; line-height: 1.05; letter-spacing: -0.5px; margin-top: 6px; font-variant-numeric: tabular-nums; }
+.kpi-unit  { font-size: 13px; color: var(--text-muted); font-weight: 500; margin-left: 4px; }
+.kpi-delta { font-size: 11px; font-weight: 700; font-family: var(--ff-mono); margin-top: 6px; display: inline-flex; align-items: center; gap: 4px; }
+.kpi-delta.up   { color: var(--cyan); }
+.kpi-delta.down { color: var(--plum); }
+.kpi-delta.flat { color: var(--text-muted); }
+.kpi-spark { position: absolute; right: 14px; bottom: 14px; opacity: 0.85; }
+
+/* Symptom domain tinted backgrounds */
+.kpi.vasomotor { border-color: var(--plum-border); }
+.kpi.vasomotor .kpi-value, .kpi.vasomotor .kpi-label { }
+.kpi.sleep     { border-color: var(--cyan-border); }
+.kpi.mood, .kpi.cognition { border-color: var(--lav-border); }
+.kpi.primary   { border-color: var(--teal-border); }
+
+/* Sparkline */
+.spark { display: block; }
+
+/* Domain text helpers */
+.t-plum { color: var(--plum); } .t-lav { color: var(--lav); } .t-cyan { color: var(--cyan); } .t-teal { color: var(--teal); }
+.t-accent { color: var(--accent); }
+.t-muted { color: var(--text-muted); }
+.t-secondary { color: var(--text-secondary); }
+.t-mono { font-family: var(--ff-mono); font-variant-numeric: tabular-nums; }
+
+/* Domain dot */
+.dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; display: inline-block; }
+.dot.vasomotor { background: var(--plum); }
+.dot.mood      { background: var(--lav); }
+.dot.cognition { background: var(--lav-light); }
+.dot.sleep     { background: var(--cyan); }
+.dot.primary   { background: var(--teal); }
+
+/* Sliders */
+.range {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 4px;
+  background: var(--border-default); border-radius: 2px;
+  outline: none;
+}
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--accent); cursor: grab;
+  box-shadow: 0 0 0 4px var(--accent-bg);
+  transition: transform .1s;
+}
+.range::-webkit-slider-thumb:active { cursor: grabbing; transform: scale(1.1); }
+.range::-moz-range-thumb {
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--accent); border: none; cursor: grab;
+  box-shadow: 0 0 0 4px var(--accent-bg);
+}
+
+/* Checkbox */
+.check {
+  width: 18px; height: 18px; border-radius: 5px; flex-shrink: 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent-ink); cursor: pointer;
+  transition: background .12s, border-color .12s, transform .15s;
+  position: relative;
+}
+.check:hover { border-color: var(--border-strong); }
+.check.checked {
+  background: var(--accent); border-color: var(--accent);
+}
+.check.checked svg { animation: check-pop .35s cubic-bezier(.2,1.4,.4,1); }
+.check.checked::after {
+  content: ''; position: absolute; inset: -3px; border-radius: 7px;
+  border: 2px solid var(--accent);
+  animation: pulse-ring .55s ease-out forwards;
+  pointer-events: none;
+}
+
+/* Ring */
+.ring { transform: rotate(-90deg); }
+.ring-track { fill: none; stroke: var(--border-default); }
+.ring-progress { fill: none; stroke-linecap: round; transition: stroke-dashoffset .6s cubic-bezier(.2,.7,.3,1); }
+
+/* Training grid */
+.tgrid {
+  display: grid;
+  grid-template-columns: 170px repeat(7, 1fr);
+  gap: 4px;
+}
+.tgrid-hd {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.6px;
+  text-transform: uppercase; color: var(--text-muted);
+  text-align: center; padding: 6px 0;
+}
+.tgrid-hd.today { color: var(--accent); }
+.tgrid-row-lbl {
+  display: flex; align-items: center; gap: 9px;
+  padding: 0 6px;
+  font-size: 12.5px; color: var(--text-primary);
+}
+.tgrid-row-lbl .ic {
+  width: 28px; height: 28px; border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  flex-shrink: 0;
+}
+.tgrid-cell {
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-base);
+  border-radius: 6px; min-height: 38px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ff-mono); font-size: 12px; font-weight: 700;
+  color: var(--text-faint); cursor: pointer;
+  transition: all .12s;
+}
+.tgrid-cell:hover { border-color: var(--border-strong); color: var(--text-muted); }
+.tgrid-cell.today { border-color: var(--accent-border); border-style: dashed; }
+.tgrid-cell.planned { background: var(--lav-bg); border-color: var(--lav-border); color: var(--lav); border-style: solid; }
+.tgrid-cell.done    { background: var(--accent-bg); border-color: var(--accent-border); color: var(--accent); border-style: solid; }
+.tgrid-cell.done svg, .tgrid-cell.planned svg { animation: check-pop .3s ease; }
+
+/* Habit grid */
+.hgrid {
+  display: grid;
+  grid-template-columns: 130px repeat(14, 1fr);
+  gap: 3px;
+  align-items: center;
+}
+.hgrid-hd { font-size: 9px; color: var(--text-faint); text-align: center; font-family: var(--ff-mono); }
+.hgrid-hd.today { color: var(--accent); font-weight: 700; }
+.hgrid-cell {
+  height: 20px; border-radius: 4px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer; transition: all .12s;
+  min-width: 0;
+}
+.hgrid-cell.done {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+}
+.hgrid-cell.done.t-cognition { background: var(--lav-bg); border-color: var(--lav-border); }
+.hgrid-cell.done.t-mood      { background: var(--lav-bg); border-color: var(--lav-border); }
+.hgrid-cell.done.t-sleep     { background: var(--cyan-bg); border-color: var(--cyan-border); }
+.hgrid-cell.today { box-shadow: 0 0 0 1px var(--accent); }
+.hgrid-cell.synced { opacity: 0.7; cursor: default; }
+.hgrid-row-lbl { font-size: 12px; color: var(--text-secondary); display: flex; align-items: center; gap: 8px; padding-right: 8px; }
+
+/* Severity scale */
+.sev-row {
+  display: grid; grid-template-columns: 160px 1fr 60px 30px;
+  align-items: center; gap: 14px;
+  padding: 10px 0; border-bottom: 1px solid var(--border-subtle);
+}
+.sev-row:last-child { border-bottom: none; }
+.sev-label { font-size: 13px; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
+.sev-bars { display: flex; gap: 3px; }
+.sev-bar {
+  flex: 1; height: 22px; border-radius: 3px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer; transition: all .12s;
+}
+.sev-bar:hover { border-color: var(--border-strong); }
+.sev-val {
+  font-family: var(--ff-mono); font-weight: 700; font-size: 14px;
+  text-align: right;
+}
+
+/* Biomarker card */
+.bm-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-md);
+  padding: 16px;
+  position: relative;
+}
+.bm-bar {
+  height: 5px; border-radius: 3px;
+  background: linear-gradient(90deg, var(--plum-border) 0%, var(--plum-border) 33%,
+                                     var(--lav-border) 33%, var(--lav-border) 66%,
+                                     var(--cyan-border) 66%, var(--cyan-border) 100%);
+  position: relative;
+  margin-top: 10px;
+}
+.bm-bar-marker {
+  position: absolute; top: -3px;
+  width: 3px; height: 11px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  box-shadow: 0 0 0 2px var(--bg-surface);
+}
+
+/* Food log row */
+.food-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.food-row:last-child { border-bottom: none; }
+.food-row .nm { flex: 1; font-size: 13px; }
+.food-row .mt { font-size: 11px; color: var(--text-muted); font-family: var(--ff-mono); width: 50px; text-align: right; }
+
+/* Tabular */
+.tbl { width: 100%; border-collapse: collapse; }
+.tbl th { text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; color: var(--text-muted); padding: 8px 12px; border-bottom: 1px solid var(--border-default); }
+.tbl td { font-size: 13px; padding: 10px 12px; border-bottom: 1px solid var(--border-subtle); }
+.tbl tr:last-child td { border-bottom: none; }
+.tbl tr:hover td { background: var(--bg-elevated); }
+
+/* Quick log button (FAB-like, but inline) */
+.fab-add {
+  position: fixed; right: 20px; bottom: 20px; z-index: 50;
+  height: 42px; padding: 0 16px;
+  background: var(--accent); color: var(--accent-ink);
+  border-radius: 99px; font-weight: 700; font-size: 13px;
+  display: flex; align-items: center; gap: 7px;
+  white-space: nowrap;
+  box-shadow: 0 12px 28px rgba(0,0,0,.55), 0 0 0 1px var(--accent-border);
+  transition: transform .15s, box-shadow .15s;
+}
+.fab-add:hover { transform: translateY(-2px); box-shadow: 0 18px 36px rgba(0,0,0,.65), 0 0 0 1px var(--accent); }
+
+/* Modal */
+.modal-shade {
+  position: fixed; inset: 0; z-index: 60;
+  background: rgba(8,4,16,0.7);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  animation: fadeUp .2s ease both;
+}
+.modal {
+  width: 560px; max-width: calc(100vw - 32px);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--r-xl);
+  padding: 26px;
+  box-shadow: 0 24px 80px rgba(0,0,0,.6);
+}
+.modal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.modal-title { font-family: var(--ff-display); font-size: 22px; font-weight: 700; letter-spacing: -0.4px; }
+
+/* Domain swatch wrap (used in Today log) */
+.log-row {
+  display: grid; grid-template-columns: 70px 22px 1fr auto;
+  gap: 12px; align-items: center;
+  padding: 10px 4px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.log-row:last-child { border-bottom: none; }
+.log-row .tm { font-family: var(--ff-mono); font-size: 11.5px; color: var(--text-muted); }
+
+/* Number input style */
+.ninput {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-family: var(--ff-mono);
+  font-size: 13px;
+  color: var(--text-primary);
+  width: 70px;
+}
+.ninput:focus { border-color: var(--accent); }
+.tinput {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: 6px;
+  padding: 7px 12px;
+  font-size: 13px;
+  color: var(--text-primary);
+  width: 100%;
+}
+.tinput:focus { border-color: var(--accent); }
+
+/* Chart frame */
+.chart-frame {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-lg);
+  padding: 20px;
+}
+
+/* Tag list */
+.tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  padding: 5px 11px; border-radius: 99px;
+  font-size: 11.5px; font-weight: 500;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
+}
+.tag-tappable { cursor: pointer; transition: all .12s; }
+.tag-tappable:hover { border-color: var(--border-strong); color: var(--text-primary); }
+
+/* Notice */
+.notice {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 12px 16px;
+  border-radius: var(--r-md);
+  background: var(--lav-bg); border: 1px solid var(--lav-border);
+  font-size: 13px; color: var(--text-secondary); line-height: 1.6;
+}
+.notice strong { color: var(--text-primary); }
+.notice .ic { color: var(--lav); flex-shrink: 0; margin-top: 1px; }
+.notice.teal { background: var(--teal-bg); border-color: var(--teal-border); }
+.notice.teal .ic { color: var(--teal); }
+.notice.plum { background: var(--plum-bg); border-color: var(--plum-border); }
+.notice.plum .ic { color: var(--plum); }
+
+@media (max-width: 760px) {
+  .app { grid-template-columns: 1fr; }
+  .sidebar { position: relative; height: auto; flex-direction: row; border-right: none; border-bottom: 1px solid var(--border-subtle); padding: 14px 18px; overflow-x: auto; }
+  .main { padding: 0 18px 80px; }
+}
+
+/* ═══════════════════════════════════════════════════════
+   SHIFTED — Newsletter extensions
+   ═══════════════════════════════════════════════════════ */
+
+.issue-brain     { --pa: var(--lav);  --pa-light: var(--lav-light);  --pa-dark: var(--lav-dark);  --pa-bg: var(--lav-bg);  --pa-border: var(--lav-border); }
+.issue-move      { --pa: var(--plum); --pa-light: var(--plum-light); --pa-dark: var(--plum-dark); --pa-bg: var(--plum-bg); --pa-border: var(--plum-border); }
+.issue-nutrition { --pa: var(--cyan); --pa-light: var(--cyan-light); --pa-dark: var(--cyan-dark); --pa-bg: var(--cyan-bg); --pa-border: var(--cyan-border); }
+.issue-sleep     { --pa: var(--teal); --pa-light: var(--teal-light); --pa-dark: var(--teal-dark); --pa-bg: var(--teal-bg); --pa-border: var(--teal-border); }
+.issue-supps     { --pa: #E8A44A; --pa-light: #F0C070; --pa-dark: #B07820; --pa-bg: #1A1208; --pa-border: #3A2808; }
+
+/* scaffold */
+.nl-wrap { max-width: 700px; margin: 0 auto; padding: 0 24px; }
+
+/* topbar */
+.nl-topbar { background: var(--bg-surface); border-bottom: 1px solid var(--border-subtle); padding: 10px 24px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.nl-topbar-text { font-size: 12px; color: var(--text-muted); }
+.nl-topbar-text strong { color: var(--text-secondary); }
+.btn-cite-guide { background: var(--pa-bg); border: 1px solid var(--pa-border); color: var(--pa); font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: var(--r-full); letter-spacing: 0.3px; white-space: nowrap; }
+.btn-cite-guide:hover { background: var(--bg-elevated); }
+
+/* guide panel */
+.nl-guide { background: var(--bg-surface); border-bottom: 1px solid var(--border-subtle); padding: 20px 24px; display: none; }
+.nl-guide.open { display: block; }
+.nl-guide-inner { max-width: 700px; margin: 0 auto; }
+.nl-guide-title { font-family: var(--ff-mono); font-size: 10px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--pa); margin-bottom: 14px; }
+.nl-guide-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 8px; margin-bottom: 14px; }
+.nl-guide-card { background: var(--bg-elevated); border: 1px solid var(--border-subtle); border-radius: var(--r-sm); padding: 10px 12px; }
+.nl-guide-card .gc-code { font-family: var(--ff-mono); font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: var(--r-xs); color: #050F14; display: inline-block; margin-bottom: 6px; }
+.nl-guide-card .gc-name { font-size: 12px; font-weight: 600; color: var(--text-primary); margin-bottom: 3px; }
+.nl-guide-card .gc-audio { font-size: 11px; color: var(--text-muted); font-style: italic; }
+.nl-guide-note { background: var(--pa-bg); border: 1px solid var(--pa-border); border-radius: var(--r-sm); padding: 10px 14px; font-size: 12px; color: var(--text-secondary); line-height: 1.6; }
+.nl-guide-note strong { color: var(--pa); }
+
+/* masthead */
+.nl-head { padding: 44px 24px 36px; border-bottom: 1px solid var(--border-subtle); max-width: 700px; margin: 0 auto; }
+.nl-brand-row { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+.nl-brand-name { font-family: var(--ff-display); font-weight: 800; font-size: 17px; letter-spacing: -0.3px; background: linear-gradient(90deg, var(--lav) 0%, var(--cyan) 38%, var(--teal) 62%, var(--plum) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.nl-brand-sep { color: var(--border-strong); }
+.nl-brand-meta { font-size: 11px; color: var(--text-muted); font-family: var(--ff-mono); }
+.nl-tag-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
+.nl-tag { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: var(--r-full); font-size: 10px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; border: 1px solid var(--pa-border); background: var(--pa-bg); color: var(--pa); font-family: var(--ff-mono); }
+.nl-tag.muted { border-color: var(--border-default); background: var(--bg-elevated); color: var(--text-muted); }
+.nl-issue-title { font-family: var(--ff-display); font-size: clamp(28px, 5vw, 42px); font-weight: 800; letter-spacing: -0.8px; line-height: 1.1; color: var(--text-primary); margin-bottom: 14px; }
+.nl-issue-sub { font-size: 15px; color: var(--text-secondary); line-height: 1.65; max-width: 580px; }
+
+/* body */
+.nl-body { max-width: 700px; margin: 0 auto; padding: 44px 24px 0; }
+.nl-body p { font-size: 15px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 18px; }
+.nl-body p:last-child { margin-bottom: 0; }
+.nl-body p strong { color: var(--text-primary); font-weight: 600; }
+
+/* section headers */
+.nl-section { margin-bottom: 40px; }
+.nl-section-hdr { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border-subtle); }
+.nl-section-icon { font-size: 18px; }
+.nl-section-label { font-family: var(--ff-mono); font-size: 10px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--pa); }
+
+/* headings */
+.nl-h2 { font-family: var(--ff-display); font-size: 22px; font-weight: 700; letter-spacing: -0.4px; color: var(--text-primary); margin: 0 0 16px; line-height: 1.2; }
+.nl-h3 { font-family: var(--ff-display); font-size: 15px; font-weight: 700; letter-spacing: -0.1px; color: var(--pa); margin: 22px 0 8px; }
+.nl-h3.breath-head { color: var(--teal); }
+
+/* boxes */
+.nl-box { border-radius: var(--r-md); padding: 20px 22px; margin-bottom: 18px; border: 1px solid; }
+.nl-box-science { background: var(--pa-bg); border-color: var(--pa-border); }
+.nl-box-expert  { background: var(--bg-elevated); border-color: var(--border-default); }
+.nl-box-plate   { background: #111006; border-color: #2A2508; }
+.nl-box-move    { background: var(--plum-bg); border-color: var(--plum-border); }
+.nl-box-track   { background: var(--lav-bg); border-color: var(--lav-border); }
+.nl-box-breath  { background: var(--teal-bg); border-color: var(--teal-border); border-left: 3px solid var(--teal); border-radius: 0 var(--r-md) var(--r-md) 0; padding-left: 24px; }
+.nl-box-label { font-family: var(--ff-mono); font-size: 9px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--pa); margin-bottom: 12px; }
+.nl-box-breath .nl-box-label { color: var(--teal); }
+.nl-box-plate .nl-box-label  { color: #E8A44A; }
+.nl-box-move  .nl-box-label  { color: var(--plum); }
+.nl-box-track .nl-box-label  { color: var(--lav); }
+.nl-box-expert .nl-box-label { color: var(--text-secondary); }
+
+/* pull quote */
+.nl-pull { border-left: 3px solid var(--pa); margin: 28px 0; padding: 16px 22px; background: var(--bg-elevated); border-radius: 0 var(--r-sm) var(--r-sm) 0; }
+.nl-pull p { font-family: var(--ff-display); font-size: 17px; font-weight: 600; font-style: italic; line-height: 1.6; color: var(--text-primary) !important; margin-bottom: 10px !important; }
+.nl-pull cite { font-size: 11px; color: var(--text-muted); font-family: var(--ff-mono); font-style: normal; }
+
+/* stats */
+.nl-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 26px; }
+.nl-stat { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--r-md); padding: 16px; text-align: center; }
+.nl-stat-val { font-family: var(--ff-mono); font-size: 26px; font-weight: 700; color: var(--pa); line-height: 1; margin-bottom: 6px; }
+.nl-stat-lbl { font-size: 12px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+.nl-stat-sub { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
+
+/* protocol cards */
+.nl-proto-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 10px; margin: 14px 0; }
+.nl-proto-card { background: var(--bg-surface); border: 1px solid var(--teal-border); border-radius: var(--r-sm); padding: 14px 15px; }
+.nl-proto-name  { font-family: var(--ff-display); font-size: 13px; font-weight: 700; color: var(--teal); margin-bottom: 6px; }
+.nl-proto-steps { font-size: 12.5px; color: var(--text-secondary); line-height: 1.55; margin-bottom: 6px; }
+.nl-proto-why   { font-size: 11px; color: var(--text-muted); font-style: italic; line-height: 1.4; }
+
+/* food / plate cards */
+.nl-food-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 10px; margin: 16px 0; }
+.nl-food-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-top: 2px solid var(--cyan); border-radius: var(--r-sm); padding: 13px 14px; }
+.nl-food-emoji { font-size: 20px; margin-bottom: 6px; }
+.nl-food-name  { font-size: 12px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+.nl-food-why   { font-size: 11px; color: var(--text-muted); line-height: 1.45; }
+.nl-plate { display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: 8px; margin: 14px 0; }
+.nl-plate-card { background: var(--bg-elevated); border: 1px solid var(--border-default); border-radius: var(--r-sm); padding: 12px 14px; }
+.nl-plate-portion { font-family: var(--ff-mono); font-size: 11px; font-weight: 700; color: var(--cyan); margin-bottom: 4px; }
+.nl-plate-food    { font-size: 12.5px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+.nl-plate-why     { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
+
+/* wearables */
+.nl-devices { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+.nl-device-pill { font-family: var(--ff-mono); font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: var(--r-full); background: var(--lav-bg); color: var(--lav); border: 1px solid var(--lav-border); }
+
+/* reset */
+.nl-reset-list { display: flex; flex-direction: column; gap: 8px; }
+.nl-reset-card { display: flex; gap: 14px; align-items: flex-start; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--r-sm); padding: 14px 16px; }
+.nl-reset-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+.nl-reset-lbl  { font-size: 10px; font-weight: 700; color: var(--pa); text-transform: uppercase; letter-spacing: 0.8px; font-family: var(--ff-mono); margin-bottom: 4px; }
+.nl-reset-text { font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; }
+
+/* divider */
+.nl-divider { height: 1px; background: var(--border-subtle); margin: 36px 0; }
+
+/* citations */
+.cite-wrap  { position: relative; display: inline; }
+.cite-text  { border-bottom: 1px solid var(--pa); cursor: pointer; padding-bottom: 1px; opacity: 0.9; }
+.cite-text:hover { opacity: 1; }
+.cite-badge { display: inline; font-family: var(--ff-mono); font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: var(--r-xs); margin-left: 2px; cursor: pointer; vertical-align: super; line-height: 1.4; color: #050F14; }
+.cite-popup { display: none; position: absolute; bottom: calc(100% + 8px); left: 0; z-index: 200; background: var(--bg-elevated); border: 1px solid var(--border-default); border-radius: var(--r-md); padding: 12px 14px; width: 290px; box-shadow: 0 8px 32px rgba(0,0,0,.5); font-size: 12px; line-height: 1.6; color: var(--text-secondary); }
+.cite-popup .cp-code  { font-family: var(--ff-mono); font-weight: 700; font-size: 10px; margin-bottom: 5px; }
+.cite-popup .cp-full  { margin-bottom: 8px; }
+.cite-popup .cp-audio { border-top: 1px solid var(--border-subtle); padding-top: 8px; font-style: italic; color: var(--text-muted); }
+.cite-wrap.open .cite-popup { display: block; }
+
+/* source roll */
+.nl-source-roll { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--border-subtle); }
+.nl-source-hdr { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+.nl-source-title { font-family: var(--ff-mono); font-size: 10px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--pa); }
+.btn-toggle-src { background: var(--bg-elevated); border: 1px solid var(--border-default); border-radius: var(--r-full); padding: 3px 10px; font-size: 11px; color: var(--text-muted); font-family: var(--ff-mono); }
+.btn-toggle-src:hover { border-color: var(--border-strong); color: var(--text-secondary); }
+.nl-outro { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--r-md); padding: 20px 22px; margin-bottom: 16px; }
+.nl-outro-label { font-family: var(--ff-mono); font-size: 9px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--pa); margin-bottom: 12px; }
+.nl-outro p { font-size: 13px; color: var(--text-secondary); line-height: 1.9; font-style: italic; }
+.nl-outro strong { color: var(--text-primary); font-style: normal; font-weight: 600; }
+.nl-src-list { display: flex; flex-direction: column; gap: 8px; }
+.nl-src-item { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: var(--r-sm); border: 1px solid var(--border-subtle); background: var(--bg-surface); }
+.nl-src-code { font-family: var(--ff-mono); font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: var(--r-xs); color: #050F14; flex-shrink: 0; margin-top: 2px; white-space: nowrap; }
+.nl-src-full  { font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 4px; }
+.nl-src-audio { font-size: 11px; color: var(--text-muted); font-style: italic; font-family: var(--ff-mono); }
+
+/* footer */
+.nl-footer { max-width: 700px; margin: 44px auto 0; padding: 20px 24px 60px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.nl-footer span { font-family: var(--ff-mono); font-size: 10px; color: var(--text-muted); }
+.nl-footer .next { font-style: italic; color: var(--pa); }
+
+@media (max-width: 480px) {
+  .nl-stats { grid-template-columns: repeat(2,1fr); }
+  .nl-food-grid { grid-template-columns: repeat(2,1fr); }
+  .nl-plate { grid-template-columns: repeat(2,1fr); }
+  .cite-popup { width: 240px; left: auto; right: 0; }
+}
+
+</style>
+<script>
+
+function initShifted(SOURCES) {
+  /* source roll list */
+  var btnSrc  = document.getElementById('btn-sources');
+  var srcBody = document.getElementById('source-body');
+  var srcList = document.getElementById('src-list');
+  if (btnSrc && srcBody && srcList) {
+    Object.values(SOURCES).forEach(function(s) {
+      var item = document.createElement('div');
+      item.className = 'nl-src-item';
+      item.innerHTML =
+        '<span class="nl-src-code" style="background:' + s.color + '">' + s.code + '</span>' +
+        '<div><div class="nl-src-full">' + s.full + '</div>' +
+        '<div class="nl-src-audio" style="color:' + s.color + '">' + s.spoken + '</div></div>';
+      srcList.appendChild(item);
+    });
+    btnSrc.addEventListener('click', function() {
+      var hidden = srcBody.style.display === 'none';
+      srcBody.style.display = hidden ? 'block' : 'none';
+      btnSrc.textContent = hidden ? 'Hide sources' : 'Show sources';
+    });
+  }
+}
+
+</script>
+</head>
+<body class="issue-brain">
+
+<style>
+.gh-nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(13,10,20,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #221B30;
+  padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  height:44px;gap:16px;
+}
+.gh-nav a{text-decoration:none;}
+.gh-brand{
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:15px;
+  background:linear-gradient(90deg,#AFA2FF 0%,#52D1DC 38%,#12AACF 62%,#C07FDA 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.gh-meta{font-family:'JetBrains Mono',monospace;font-size:10px;color:#5E5A76;}
+
+.gh-nav-btn{
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;
+  color:#9C97B4;padding:5px 10px;border-radius:6px;
+  border:1px solid transparent;transition:all .12s;white-space:nowrap;
+}
+.gh-nav-btn:hover{color:#F2EEF8;border-color:#2E2542;background:#1D1729;}
+.gh-nav-btn.disabled{color:#3F3B53;pointer-events:none;}
+@media(max-width:480px){.gh-meta{display:none;}}
+</style>
+
+<nav class="gh-nav">
+  <a href="index.html" class="gh-brand">shifted</a>
+  <span class="gh-meta">Issue 01 · Brain & Hormones · Cycle 1</span>
+  <a href="index.html" class="gh-nav-btn">← All issues</a>
+</nav>
+<script>
+const SOURCES = {
+  XX:       { code:"XX",        color:"#AFA2FF", short:"The XX Brain",          full:"Dr. Lisa Mosconi, The XX Brain (Avery/Penguin Random House, 2020)",                                                                                                    spoken:"Dr. Lisa Mosconi in The XX Brain" },
+  ROAR:     { code:"ROAR",      color:"#C07FDA", short:"ROAR",                  full:"Dr. Stacy Sims, ROAR: Match Your Food and Fitness to Your Unique Female Physiology (Rodale Books, revised edition)",                                                    spoken:"Dr. Stacy Sims in ROAR" },
+  HAVER_NM: { code:"HAVER·NM",  color:"#52D1DC", short:"The New Menopause",     full:"Dr. Mary Claire Haver, The New Menopause (Rodale Books, 2024)",                                                                                                         spoken:"Dr. Mary Claire Haver in The New Menopause" },
+  HAVER_HL: { code:"HAVER·HL",  color:"#12AACF", short:"Haver / Huberman Lab",  full:"Dr. Mary Claire Haver on the Huberman Lab Podcast, 'How to Navigate Menopause & Perimenopause for Maximum Health & Vitality,' June 3, 2024",                           spoken:"Dr. Mary Claire Haver on the Huberman Lab podcast, June 2024" },
+  DOAC_MCH: { code:"DOAC·MCH",  color:"#AFA2FF", short:"DOAC — Dr. Haver",      full:"Dr. Mary Claire Haver on The Diary of a CEO with Steven Bartlett, 'They're Lying To You About Menopause,' December 18, 2023",                                          spoken:"Dr. Mary Claire Haver on The Diary of a CEO, December 2023" },
+  DOAC_LM:  { code:"DOAC·LM",   color:"#AFA2FF", short:"DOAC — Dr. Mosconi",    full:"Dr. Lisa Mosconi on The Diary of a CEO with Steven Bartlett, 'This Diet Delays Menopause / Menopause Is Shrinking Your Brain,' June 13, 2024",                         spoken:"Dr. Lisa Mosconi on The Diary of a CEO, June 2024" },
+  GOTT:     { code:"GOTT·HL",   color:"#12AACF", short:"Gottfried / Huberman",  full:"Dr. Sara Gottfried on the Huberman Lab Podcast, 'How to Optimize Female Hormone Health for Vitality & Longevity,' January 30, 2023",                                   spoken:"Dr. Sara Gottfried on the Huberman Lab podcast, January 2023" },
+};
+document.addEventListener('DOMContentLoaded', () => initShifted(SOURCES));
+</script>
+<script>
+</script>
+<!-- TOP BAR -->
+
+
+<!-- MASTHEAD -->
+<header class="nl-head">
+<div class="nl-brand-row">
+<span class="nl-brand-name">shifted</span>
+<span class="nl-brand-sep">/</span>
+<span class="nl-brand-meta">Issue 01 · Week 1 · Cycle 1</span>
+</div>
+<div class="nl-tag-row">
+<span class="nl-tag">Brain &amp; Hormones</span>
+<span class="nl-tag muted">~15 min read</span>
+<span class="nl-tag muted">Cycle 1: The Foundations</span>
+</div>
+<h1 class="nl-issue-title">What really happens to your brain in perimenopause</h1>
+<p class="nl-issue-sub">The science your doctor probably didn't explain — and why it starts earlier than you think.</p>
+</header>
+<!-- BODY -->
+<main class="nl-body">
+<p>If you've noticed in your early forties that memory isn't quite as sharp, sleep has gotten rougher, or mood has taken turns that feel out of character — you're not imagining it, and it isn't stress. What you're experiencing has a biological explanation that researchers are only now articulating clearly.</p>
+<p>Dr. Mary Claire Haver describes perimenopause as "its own very distinct biological transition — not a waiting room for menopause." It can begin as early as the late thirties and last anywhere from one to eight years. During that entire time, your brain is changing. This issue explains what those changes are, why they happen, and what you can do about them.</p>
+<div class="nl-divider"></div>
+<!-- 1. SCIENCE -->
+<div class="nl-section">
+<div class="nl-section-hdr">
+<span class="nl-section-icon">🔬</span>
+<span class="nl-section-label">This Week's Science</span>
+</div>
+<div class="nl-box nl-box-science">
+<p>In brain imaging studies on healthy women aged 21 to 80, Dr. Lisa Mosconi measured how the brain processes glucose — its primary fuel — while scanning for Alzheimer's plaques, brain shrinkage, and vascular changes.</p>
+<p>Post-menopausal women showed substantially lower metabolic activity — in some cases reduced by more than 30 percent. Crucially, similar reductions appeared in women still in perimenopause. Men of the same age showed minimal changes.</p>
+</div>
+</div>
+<!-- 2. DEEP DIVE -->
+<div class="nl-section">
+<div class="nl-section-hdr">
+<span class="nl-section-icon">💡</span>
+<span class="nl-section-label">The Deep Dive</span>
+</div>
+<h2 class="nl-h2">Your brain runs on estrogen — and perimenopause is its first fuel cut</h2>
+<p>Most of us learned that the brain runs on glucose. True — but estrogen is a key regulator of how efficiently that glucose is used. Dr. Mosconi frames estrogen as "fuel for the brain" rather than simply a reproductive hormone. When you see it that way, the magnitude of the perimenopause transition becomes much clearer.</p>
+<p>Estrogen connects the hypothalamus — which governs hormone production — with the hippocampus (memory), the amygdala (emotion), and the frontal cortex (attention, language, reasoning). When estrogen begins to fluctuate in perimenopause, that communication gets noisy, and the brain has to find new ways to perform.</p>
+<div class="nl-pull">
+<p>"Menopause doesn't 'cause' Alzheimer's. It's more like a trigger — in which the superpower of estrogen is revoked, and the brain has to find new ways to perform efficiently."</p>
+<cite>— Dr. Lisa Mosconi, The XX Brain</cite>
+</div>
+<h3 class="nl-h3">Four brain symptoms you may already be experiencing</h3>
+<p><strong>Brain fog and memory lapses.</strong> Up to 60 percent of women report reduced focus and mental clarity during perimenopause. These lapses are real and biologically grounded — not stress, not ageing prematurely.</p>
+<p><strong>Disrupted sleep.</strong> Dr. Stacy Sims explains that progesterone — the antianxiety hormone — has direct sedative effects and is a respiratory stimulant. As progesterone drops in perimenopause, sleep disturbances rise. Estrogen also increases REM sleep and assists serotonin metabolism. When both decline, sleep architecture falls apart well before hot flashes begin.</p>
+<p><strong>Mood instability and low-grade depression.</strong> Estrogen directly influences serotonin and dopamine pathways. Too often, women discuss perimenopause with their doctor and leave with antidepressants — when hormonal evaluation should come first.</p>
+<p><strong>Stress amplification.</strong> The "pregnenolone steal" — where cortisol production hijacks the same pathway that makes progesterone and estrogen — accelerates hot flashes, anxiety, and hormonal imbalance simultaneously. Chronic stress doesn't just feel worse during perimenopause; it biologically worsens it.</p>
+<h3 class="nl-h3">The Alzheimer's connection — and why timing is everything</h3>
+<p>Some women transitioning to menopause showed increased accumulation of amyloid plaques — a hallmark of Alzheimer's disease — along with metabolic decline and shrinkage of the brain's memory centres, despite showing no outward cognitive impairment yet. This is the earliest warning signal, and it opens a window.</p>
+<p>Dr. Mosconi described Alzheimer's on The Diary of a CEO as being like a stock market crash — it doesn't arrive without warning, but appears at the end of a long sequence of changes, with the perimenopause transition as a critical inflection point.</p>
+<p>The good news is that this is also the window of greatest opportunity. The earlier you understand what's happening, the earlier you can intervene with the lifestyle tools that move the needle most.</p>
+</div>
+<!-- 3. FROM THE EXPERTS -->
+<div class="nl-section">
+<div class="nl-section-hdr">
+<span class="nl-section-icon">🎙️</span>
+<span class="nl-section-label">From the Experts</span>
+</div>
+<div class="nl-box nl-box-expert">
+<div class="nl-box-label">Dr. Haver — Huberman Lab, June 2024</div>
+<p>Dr. Haver described the moment she realised she was already in perimenopause — despite being a practising OB/GYN. She had been experiencing symptoms she didn't connect to the transition because, like most doctors trained before 2015, she had never been taught the full spectrum of perimenopause symptoms.</p>
+<p>On The Diary of a CEO: "A lot of people misunderstand perimenopause as a waiting room for menopause. It really is its own very distinct biological transition — with its own set of symptoms."</p>
+<p>Her advice: don't wait for a hot flash. Cognitive, emotional, and sleep changes often arrive first — and they're just as clinically valid as the physical ones.</p>
+</div>
+</div>
+<!-- 4. TRACK IT -->
+<div class="nl-section">
+<div class="nl-section-hdr">
+<span class="nl-section-icon">📲</span>
+<span class="nl-section-label">Track It</span>
+</div>
+<div class="nl-box nl-box-track">
+<div class="nl-box-label">Brain &amp; Hormones — what to measure</div>
+<p>The most useful wearable proxy for hormonal nervous system health is <strong>heart rate variability (HRV)</strong>. A sustained HRV drop of 15–20% often precedes the subjective experience of cognitive fatigue and mood instability by several days — an early-warning signal worth logging alongside your symptom diary.</p>
+<p>Establish your baseline this week. Check your HRV trend each morning for seven days and note any days of brain fog, poor sleep, or elevated stress. Patterns emerge quickly.</p>
+<div class="nl-devices">
+<span class="nl-device-pill">Oura Ring — HRV + readiness</span>
+<span class="nl-device-pill">WHOOP — recovery score</span>
+<span class="nl-device-pill">Apple Watch — HRV trend</span>
+<span class="nl-device-pill">Garmin — body battery</span>
+</div>
+</div>
+</div>
+<!-- 5. PLATE & PROTOCOL -->
+<div class="nl-section">
+<div class="nl-section-hdr">
+<span class="nl-section-icon">🍽️</span>
+<span class="nl-section-label">Plate &amp; Protocol</span>
+</div>
+<div class="nl-box nl-box-plate">
+<div class="nl-box-label">This week's swap</div>
+<p>Dr. Mosconi's research shows that a Western diet high in refined sugars and processed fats accelerates brain ageing by the equivalent of up to five additional years. The Mediterranean diet — olive oil, oily fish, leafy greens, berries, legumes — is associated with significantly lower rates of cognitive decline and Alzheimer's plaques.</p>
+<p><strong>One swap, this week:</strong> Replace any refined seed oil (sunflower, vegetable, canola) with extra-virgin olive oil or avocado oil. Every meal. It's the single highest-leverage dietary change for reducing neuroinflammation, and it costs about 90 seconds to implement.</p>
+</div>
+</div>
+<!-- 6. MOVE -->
+<div class="nl-section">
+<div class="nl-section-hdr">
+<span class="nl-section-icon">🏋️</span>
+<span class="nl-section-label">Move Like You Mean It</span>
+</div>
+<div class="nl-box nl-box-move">
+<div class="nl-box-label">This week's protocol</div>
+<p>Dr. Mosconi's research shows that low-to-moderate intensity exercise — enough to elevate heart rate without preventing conversation — optimises metabolic performance in women around menopause. Five days a week of 30-minute moderate activity is associated with decreased risks of heart disease, diabetes, and cognitive decline. Higher intensity did not improve these benefits and in some cases reduced them.</p>
+<p><strong>This week:</strong> Two resistance training sessions + three 30-minute brisk walks. Both in your calendar, as appointments. This is the evidence-based minimum for this phase of life.</p>
+</div>
+</div>
+<!-- 7. RESET -->
+<div class="nl-section">
+<div class="nl-section-hdr">
+<span class="nl-section-icon">✅</span>
+<span class="nl-section-label">Your Weekly Reset</span>
+</div>
+<div class="nl-reset-list">
+<div class="nl-reset-card">
+<span class="nl-reset-icon">🏃‍♀️</span>
+<div><div class="nl-reset-lbl">Body</div><div class="nl-reset-text">Schedule two resistance sessions and three brisk walks. Put them in your calendar now — not as options, as appointments.</div></div>
+</div>
+<div class="nl-reset-card">
+<span class="nl-reset-icon">🧠</span>
+<div><div class="nl-reset-lbl">Brain</div><div class="nl-reset-text">Swap your cooking oil and establish your HRV baseline on your tracker. Note it — this is your Week 1 data point.</div></div>
+</div>
+<div class="nl-reset-card">
+<span class="nl-reset-icon">🌱</span>
+<div><div class="nl-reset-lbl">Mindset</div><div class="nl-reset-text">If you've been dismissing brain fog, mood shifts, or disrupted sleep as ageing or stress — you now have a better explanation. That reframe is where informed action starts.</div></div>
+</div>
+</div>
+</div>
+<!-- SOURCE ROLL -->
+<div class="nl-source-roll">
+<div class="nl-source-hdr">
+<span class="nl-source-title">📚 Sources — Issue 01</span>
+<button class="btn-toggle-src" id="btn-sources">Hide sources</button>
+</div>
+<div id="source-body">
+
+<div class="nl-src-list" id="src-list"></div>
+</div>
+</div>
+</main>
+<footer class="nl-footer">
+<span>Issue 01 · Cycle 1: The Foundations · Brain &amp; Hormones</span>
+<span class="next">Next → Why resistance training is non-negotiable after 40</span>
+</footer>
+</body>
+</html>
