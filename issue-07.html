@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shifted · Issue 07 · Estrogen as brain fuel — the full neuroscience of the decline</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-base:#0D0A14;--bg-surface:#15101F;--bg-elevated:#1D1729;
+  --border-subtle:#221B30;--border-default:#2E2542;--border-strong:#3E3358;
+  --text-primary:#F2EEF8;--text-secondary:#9C97B4;--text-muted:#5E5A76;--text-faint:#3F3B53;
+  --teal:#12AACF;--teal-bg:#061820;--teal-border:#0C3E50;
+  --cyan:#52D1DC;--cyan-bg:#04191C;--cyan-border:#0A3438;
+  --lav:#AFA2FF;--lav-light:#C8BFFF;--lav-dark:#8070E8;--lav-bg:#100D24;--lav-border:#201860;
+  --plum:#C07FDA;--plum-bg:#180E22;--plum-border:#361848;
+  --pa:#AFA2FF;--pa-light:#C8BFFF;--pa-dark:#8070E8;--pa-bg:#100D24;--pa-border:#201860;
+  --ff-display:'Bricolage Grotesque',sans-serif;
+  --ff-body:'DM Sans',sans-serif;
+  --ff-mono:'JetBrains Mono',monospace;
+  --r-xs:4px;--r-sm:8px;--r-md:12px;--r-full:9999px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:var(--bg-base);color:var(--text-secondary);font-family:var(--ff-body);font-size:15px;line-height:1.8;-webkit-font-smoothing:antialiased;}
+button{cursor:pointer;font-family:var(--ff-body);border:none;background:none;}
+
+/* NAV */
+.gh-nav{position:sticky;top:0;z-index:100;background:rgba(13,10,20,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-subtle);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:44px;gap:16px;}
+.gh-nav a{text-decoration:none;}
+.gh-brand{font-family:var(--ff-display);font-weight:800;font-size:15px;background:linear-gradient(90deg,var(--lav) 0%,var(--cyan) 38%,var(--teal) 62%,var(--plum) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.gh-meta{font-family:var(--ff-mono);font-size:10px;color:var(--text-muted);}
+.gh-nav-btn{font-family:var(--ff-mono);font-size:11px;font-weight:600;color:var(--text-muted);padding:5px 10px;border-radius:6px;border:1px solid transparent;transition:all .12s;white-space:nowrap;text-decoration:none;display:inline-block;}
+.gh-nav-btn:hover{color:var(--text-primary);border-color:var(--border-default);background:var(--bg-elevated);}
+@media(max-width:480px){.gh-meta{display:none;}}
+
+/* LAYOUT */
+.nl-head{padding:44px 24px 36px;border-bottom:1px solid var(--border-subtle);max-width:700px;margin:0 auto;}
+.nl-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:28px;}
+.nl-brand-name{font-family:var(--ff-display);font-weight:800;font-size:17px;letter-spacing:-0.3px;background:linear-gradient(90deg,var(--lav) 0%,var(--cyan) 38%,var(--teal) 62%,var(--plum) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.nl-brand-sep{color:var(--border-strong);}
+.nl-brand-meta{font-size:11px;color:var(--text-muted);font-family:var(--ff-mono);}
+.nl-tag-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px;}
+.nl-tag{display:inline-flex;align-items:center;padding:3px 10px;border-radius:var(--r-full);font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;border:1px solid var(--pa-border);background:var(--pa-bg);color:var(--pa);font-family:var(--ff-mono);}
+.nl-tag.muted{border-color:var(--border-default);background:var(--bg-elevated);color:var(--text-muted);}
+.nl-issue-title{font-family:var(--ff-display);font-size:clamp(28px,5vw,42px);font-weight:800;letter-spacing:-0.8px;line-height:1.1;color:var(--text-primary);margin-bottom:14px;}
+.nl-issue-sub{font-size:15px;color:var(--text-secondary);line-height:1.65;max-width:580px;}
+
+/* BODY */
+.nl-body{max-width:700px;margin:0 auto;padding:44px 24px 0;}
+.nl-body p{font-size:15px;line-height:1.8;color:var(--text-secondary);margin-bottom:18px;}
+.nl-body p:last-child{margin-bottom:0;}
+.nl-body p strong{color:var(--text-primary);font-weight:600;}
+
+/* SECTIONS */
+.nl-section{margin-bottom:40px;}
+.nl-section-hdr{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border-subtle);}
+.nl-section-icon{font-size:18px;}
+.nl-section-label{font-family:var(--ff-mono);font-size:10px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--pa);}
+.nl-section-label.teal{color:var(--teal);}
+.nl-section-label.lav{color:var(--lav);}
+.nl-section-label.plum{color:var(--plum);}
+.nl-section-label.muted{color:var(--text-muted);}
+
+/* HEADINGS */
+.nl-h2{font-family:var(--ff-display);font-size:22px;font-weight:700;letter-spacing:-0.4px;color:var(--text-primary);margin:0 0 16px;line-height:1.2;}
+.nl-h3{font-family:var(--ff-display);font-size:15px;font-weight:700;letter-spacing:-0.1px;color:var(--pa);margin:24px 0 8px;}
+
+/* BOXES */
+.nl-box{border-radius:var(--r-md);padding:20px 22px;margin-bottom:18px;border:1px solid;}
+.nl-box-science{background:var(--pa-bg);border-color:var(--pa-border);}
+.nl-box-expert{background:var(--bg-elevated);border-color:var(--border-default);}
+.nl-box-track{background:var(--lav-bg);border-color:var(--lav-border);}
+.nl-box-plate{background:#0A0714;border-color:#1C1240;}
+.nl-box-move{background:var(--plum-bg);border-color:var(--plum-border);}
+.nl-box-label{font-family:var(--ff-mono);font-size:9px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--pa);margin-bottom:12px;}
+.nl-box-track  .nl-box-label{color:var(--lav);}
+.nl-box-plate  .nl-box-label{color:#8070E8;}
+.nl-box-move   .nl-box-label{color:var(--plum);}
+
+/* PULL QUOTE */
+.nl-pull{border-left:3px solid var(--pa);margin:28px 0;padding:16px 22px;background:var(--bg-elevated);border-radius:0 var(--r-sm) var(--r-sm) 0;}
+.nl-pull p{font-family:var(--ff-display);font-size:17px;font-weight:600;font-style:italic;line-height:1.6;color:var(--text-primary)!important;margin-bottom:10px!important;}
+.nl-pull cite{font-size:11px;color:var(--text-muted);font-family:var(--ff-mono);font-style:normal;}
+
+/* STATS */
+.nl-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:26px;}
+.nl-stat{background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:16px;text-align:center;}
+.nl-stat-val{font-family:var(--ff-mono);font-size:24px;font-weight:700;color:var(--pa);line-height:1;margin-bottom:6px;}
+.nl-stat-lbl{font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:4px;}
+.nl-stat-sub{font-size:11px;color:var(--text-muted);line-height:1.4;}
+
+/* ROLE CARDS — estrogen's 5 brain roles */
+.role-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:16px 0;}
+.role-card{background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:16px 18px;border-top:2px solid var(--pa);}
+.role-num{font-family:var(--ff-mono);font-size:10px;font-weight:700;color:var(--pa);letter-spacing:1px;margin-bottom:6px;}
+.role-name{font-size:13.5px;font-weight:700;color:var(--text-primary);margin-bottom:5px;}
+.role-desc{font-size:12.5px;color:var(--text-secondary);line-height:1.55;}
+
+/* NEUROTRANSMITTER TABLE */
+.nt-list{display:flex;flex-direction:column;gap:8px;margin:14px 0;}
+.nt-row{display:grid;grid-template-columns:120px 1fr;gap:0;background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--r-sm);overflow:hidden;}
+.nt-name{padding:12px 14px;background:var(--pa-bg);border-right:1px solid var(--pa-border);}
+.nt-label{font-family:var(--ff-mono);font-size:10px;font-weight:700;color:var(--pa);letter-spacing:.5px;margin-bottom:3px;}
+.nt-sub{font-size:11px;color:var(--text-muted);}
+.nt-desc{padding:12px 16px;font-size:13px;color:var(--text-secondary);line-height:1.55;}
+
+/* WEARABLES */
+.nl-devices{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;}
+.nl-device-pill{font-family:var(--ff-mono);font-size:10px;font-weight:600;padding:3px 10px;border-radius:var(--r-full);background:var(--lav-bg);color:var(--lav);border:1px solid var(--lav-border);}
+
+/* RESET */
+.nl-reset-list{display:flex;flex-direction:column;gap:8px;}
+.nl-reset-card{display:flex;gap:14px;align-items:flex-start;background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--r-sm);padding:14px 16px;}
+.nl-reset-icon{font-size:18px;flex-shrink:0;margin-top:2px;}
+.nl-reset-lbl{font-size:10px;font-weight:700;color:var(--pa);text-transform:uppercase;letter-spacing:.8px;font-family:var(--ff-mono);margin-bottom:4px;}
+.nl-reset-text{font-size:13.5px;color:var(--text-secondary);line-height:1.6;}
+
+/* DIVIDER */
+.nl-divider{height:1px;background:var(--border-subtle);margin:36px 0;}
+
+/* SOURCE ROLL */
+.nl-source-roll{margin-top:48px;padding-top:28px;border-top:1px solid var(--border-subtle);}
+.nl-source-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}
+.nl-source-title{font-family:var(--ff-mono);font-size:10px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--pa);}
+.btn-toggle-src{background:var(--bg-elevated);border:1px solid var(--border-default);border-radius:var(--r-full);padding:3px 10px;font-size:11px;color:var(--text-muted);font-family:var(--ff-mono);}
+.nl-src-list{display:flex;flex-direction:column;gap:8px;}
+.nl-src-item{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:var(--r-sm);border:1px solid var(--border-subtle);background:var(--bg-surface);}
+.nl-src-code{font-family:var(--ff-mono);font-size:9px;font-weight:700;padding:2px 7px;border-radius:var(--r-xs);color:#050F14;flex-shrink:0;margin-top:2px;white-space:nowrap;}
+.nl-src-full{font-size:12px;color:var(--text-secondary);line-height:1.5;margin-bottom:4px;}
+.nl-src-audio{font-size:11px;color:var(--text-muted);font-style:italic;font-family:var(--ff-mono);}
+
+/* FOOTER */
+.nl-footer{max-width:700px;margin:44px auto 0;padding:20px 24px 60px;border-top:1px solid var(--border-subtle);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.nl-footer span{font-family:var(--ff-mono);font-size:10px;color:var(--text-muted);}
+.nl-footer .next{font-style:italic;color:var(--pa);}
+
+@media(max-width:480px){
+  .nl-stats{grid-template-columns:repeat(2,1fr);}
+  .role-grid{grid-template-columns:1fr;}
+  .nt-row{grid-template-columns:1fr;}
+  .nt-name{border-right:none;border-bottom:1px solid var(--pa-border);}
+}
+</style>
+
+<script>
+const SOURCES = {
+  XX:      { code:"XX",       color:"#AFA2FF", short:"The XX Brain",         full:"Dr. Lisa Mosconi, The XX Brain: The Groundbreaking Science Empowering Women to Maximize Cognitive Health and Prevent Alzheimer's Disease (Avery/Penguin Random House, 2020)", spoken:"Dr. Lisa Mosconi in The XX Brain" },
+  ROAR:    { code:"ROAR",     color:"#C07FDA", short:"ROAR",                 full:"Dr. Stacy Sims, ROAR: Match Your Food and Fitness to Your Unique Female Physiology for Optimum Performance, Great Health, and a Strong Body for Life (Rodale Books, revised edition)", spoken:"Dr. Stacy Sims in ROAR" },
+  GOTT:    { code:"GOTT·HL",  color:"#12AACF", short:"Gottfried / Huberman", full:"Dr. Sara Gottfried on the Huberman Lab Podcast, 'How to Optimize Female Hormone Health for Vitality & Longevity,' January 30, 2023",                                            spoken:"Dr. Sara Gottfried on the Huberman Lab podcast, January 2023" },
+  DOAC_LM: { code:"DOAC·LM", color:"#AFA2FF", short:"DOAC — Dr. Mosconi",   full:"Dr. Lisa Mosconi on The Diary of a CEO with Steven Bartlett, 'This Diet Delays Menopause / Menopause Is Shrinking Your Brain,' June 13, 2024",                                    spoken:"Dr. Lisa Mosconi on The Diary of a CEO, June 2024" },
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+  var btnSrc  = document.getElementById('btn-sources');
+  var srcBody = document.getElementById('source-body');
+  var srcList = document.getElementById('src-list');
+  if (btnSrc && srcBody && srcList) {
+    Object.values(SOURCES).forEach(function(s) {
+      var item = document.createElement('div');
+      item.className = 'nl-src-item';
+      item.innerHTML =
+        '<span class="nl-src-code" style="background:' + s.color + '">' + s.code + '</span>' +
+        '<div><div class="nl-src-full">' + s.full + '</div>' +
+        '<div class="nl-src-audio" style="color:' + s.color + '">' + s.spoken + '</div></div>';
+      srcList.appendChild(item);
+    });
+    btnSrc.addEventListener('click', function() {
+      var hidden = srcBody.style.display === 'none';
+      srcBody.style.display = hidden ? 'block' : 'none';
+      btnSrc.textContent = hidden ? 'Hide sources' : 'Show sources';
+    });
+  }
+});
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="gh-nav">
+  <a href="index.html" class="gh-brand">shifted</a>
+  <span class="gh-meta">Issue 07 · Brain &amp; Hormones · Cycle 2</span>
+  <a href="index.html" class="gh-nav-btn">← All issues</a>
+</nav>
+
+<!-- MASTHEAD -->
+<header class="nl-head">
+  <div class="nl-brand-row">
+    <span class="nl-brand-name">shifted</span>
+    <span class="nl-brand-sep">/</span>
+    <span class="nl-brand-meta">Issue 07 · Week 7 · Cycle 2</span>
+  </div>
+  <div class="nl-tag-row">
+    <span class="nl-tag">Brain &amp; Hormones</span>
+    <span class="nl-tag muted">~15 min read</span>
+    <span class="nl-tag muted">Cycle 2: The Mechanisms</span>
+  </div>
+  <h1 class="nl-issue-title">Estrogen as brain fuel — the full neuroscience of the decline</h1>
+  <p class="nl-issue-sub">Issue 01 told you what happens. This issue explains how — the HPG axis, estrogen's five roles in the brain, and why losing it is a neurological event, not just a hormonal one.</p>
+</header>
+
+<!-- BODY -->
+<main class="nl-body">
+
+  <p>Cycle 2 goes deeper. Where Cycle 1 introduced each pillar at the level of "what is happening and why does it matter," Cycle 2 explains the mechanisms — the actual biology underneath the symptoms. For the Brain & Hormones pillar, that means one question above all others: what does estrogen actually do in the brain, step by step, that makes its decline so consequential?</p>
+  <p>The short answer is that estrogen is not a reproductive hormone that happens to affect the brain. It is a brain hormone that happens to govern reproduction. That reframing changes everything about how you understand perimenopause — and what you do about it.</p>
+
+  <div class="nl-divider"></div>
+
+  <!-- 1. SCIENCE -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">🔬</span>
+      <span class="nl-section-label">This Week's Science</span>
+    </div>
+    <div class="nl-box nl-box-science">
+      <p>In 1992, scientists made a discovery that fundamentally changed how we understand the female brain: sex hormones — estrogen in particular — influence not only sexual behaviour but brain function itself. The hormones previously classified as "reproductive" turned out to be equally critical for cognition, mood, memory, and neurological health. In other words, the brain and the ovaries are not separate systems. They are one continuous feedback loop.</p>
+      <p>The X chromosome — which women carry double — contains 1,098 genes compared with the Y chromosome's 78. Many of those additional genes are critical for both hormonal production and brain activity. The female brain is not simply a human brain with different hormones. It is a differently built brain, wired to run on a hormonal fuel that eventually runs out.</p>
+    </div>
+  </div>
+
+  <!-- 2. DEEP DIVE -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">💡</span>
+      <span class="nl-section-label">The Deep Dive</span>
+    </div>
+    <h2 class="nl-h2">The HPG axis and estrogen's five roles in the brain</h2>
+
+    <div class="nl-stats">
+      <div class="nl-stat"><div class="nl-stat-val">5</div><div class="nl-stat-lbl">Distinct brain roles</div><div class="nl-stat-sub">Estrogen serves in the brain beyond reproduction</div></div>
+      <div class="nl-stat"><div class="nl-stat-val">4</div><div class="nl-stat-lbl">Neurotransmitter systems</div><div class="nl-stat-sub">Directly regulated by estrogen</div></div>
+      <div class="nl-stat"><div class="nl-stat-val">1,098</div><div class="nl-stat-lbl">Genes on the X chromosome</div><div class="nl-stat-sub">vs 78 on the Y — many critical for brain + hormonal function</div></div>
+      <div class="nl-stat"><div class="nl-stat-val">1992</div><div class="nl-stat-lbl">The year everything changed</div><div class="nl-stat-sub">When scientists discovered estrogen's full brain role</div></div>
+    </div>
+
+    <h3 class="nl-h3">The HPG axis — how the brain commands the ovaries, and why the feedback matters</h3>
+    <p>The hypothalamic-pituitary-gonadal axis — the HPG axis — is the command chain that governs sex hormone production. The hypothalamus, deep inside the brain, releases gonadotropin-releasing hormone (GnRH), which signals the pituitary gland to release follicle-stimulating hormone (FSH) and luteinising hormone (LH), which in turn instruct the ovaries to produce estrogen and progesterone.</p>
+    <p>What makes this remarkable is the direction of the feedback: the brain commands the ovaries, and the ovaries report back to the brain in real time, day after day, throughout a woman's life. The hypothalamus is simultaneously the controller and the receiver. It is in continuous contact with the hippocampus (memory), the amygdala (emotion), the posterior cingulate cortex (autobiographical memory), and the frontal cortex (attention, language, reasoning). When estrogen levels drop, the entire network is affected — not just reproductive function.</p>
+    <p>This is why perimenopause is a neurological event. The ovaries are failing to answer the brain's call, and the brain — which has been calibrated to run on the answer — has to find new ways to function without it.</p>
+
+    <h3 class="nl-h3">Estrogen's five roles in the brain</h3>
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-num">Role 01</div>
+        <div class="role-name">Energy regulation</div>
+        <div class="role-desc">Estrogen is the master regulator of brain energy production and homeostasis — governing how neurons produce and consume fuel. When it declines, cerebral glucose metabolism drops, producing the "low fuel" state we introduced in Issue 01.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-num">Role 02</div>
+        <div class="role-name">Neuroprotection</div>
+        <div class="role-desc">Estrogen boosts the brain's immune system, shielding neurons from harm and reducing neuroinflammation. It acts as both antioxidant and anti-inflammatory agent — a dual defence that is lost entirely when estrogen declines.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-num">Role 03</div>
+        <div class="role-name">Neuroplasticity</div>
+        <div class="role-desc">Estrogen encourages the formation of new connections between neurons. A well-connected brain is more resilient and adaptable. As estrogen drops, synaptic density falls — the brain loses some of its capacity to rewire itself in response to learning and experience.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-num">Role 04</div>
+        <div class="role-name">Neurotransmitter regulation</div>
+        <div class="role-desc">Estrogen governs production and receptor sensitivity for serotonin, dopamine, GABA, and acetylcholine — the four neurotransmitter systems most involved in mood, memory, focus, and calm. Covered in detail below.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-num">Role 05</div>
+        <div class="role-name">Cerebral blood flow</div>
+        <div class="role-desc">Estrogen acts as a vasodilator — it keeps blood vessels supplying the brain open and responsive. As levels decline, cerebrovascular efficiency falls, reducing the brain's supply of oxygen and nutrients independent of cardiovascular disease.</div>
+      </div>
+    </div>
+
+    <h3 class="nl-h3">The neurotransmitter cascade — four systems, one hormone</h3>
+    <p>When you understand that estrogen regulates four major neurotransmitter systems simultaneously, the breadth of perimenopausal symptoms stops being surprising. Brain fog, low mood, anxiety, memory lapses, disrupted sleep, and lost motivation are not separate problems. They are the same problem — estrogen withdrawal — expressed across four different neurochemical systems.</p>
+
+    <div class="nt-list">
+      <div class="nt-row">
+        <div class="nt-name">
+          <div class="nt-label">Serotonin</div>
+          <div class="nt-sub">Mood · sleep · appetite</div>
+        </div>
+        <div class="nt-desc">Estrogen increases serotonin synthesis and the number of serotonin receptors in the brain, and modifies the production of endorphins and other mood-stabilising chemicals. As estrogen drops, serotonin availability and receptor sensitivity both fall — explaining mood instability, worsening sleep, and increased sensitivity to pain.</div>
+      </div>
+      <div class="nt-row">
+        <div class="nt-name">
+          <div class="nt-label">Dopamine</div>
+          <div class="nt-sub">Drive · focus · reward</div>
+        </div>
+        <div class="nt-desc">Women produce more dopamine than men under the influence of estrogen — it is a central driver of motivation, reward-seeking behaviour, and sustained focus. As estrogen declines, dopamine transmission becomes less efficient. The loss of drive and initiative many women describe in perimenopause is not a mood disorder. It is dopamine dysregulation.</div>
+      </div>
+      <div class="nt-row">
+        <div class="nt-name">
+          <div class="nt-label">GABA</div>
+          <div class="nt-sub">Calm · sleep · anxiety buffer</div>
+        </div>
+        <div class="nt-desc">Estrogen influences production of GABA — gamma-aminobutyric acid — the brain's primary calming neurotransmitter and the same receptor system targeted by benzodiazepine medications. Dr. Mosconi describes estrogen as "nature's Prozac" precisely because of this GABA connection. Its loss is experienced as heightened anxiety, restlessness, and the inability to wind down that so many perimenopausal women report.</div>
+      </div>
+      <div class="nt-row">
+        <div class="nt-name">
+          <div class="nt-label">Cortisol</div>
+          <div class="nt-sub">Stress buffer · fight-or-flight</div>
+        </div>
+        <div class="nt-desc">Estrogen directly inhibits cortisol — the primary stress hormone. As estrogen falls, this inhibition weakens and cortisol rises more readily and stays elevated longer. Combined with the pregnenolone steal (covered in Issue 04), the result is a self-amplifying stress loop: low estrogen allows higher cortisol, which further suppresses the remaining estrogen production.</div>
+      </div>
+    </div>
+
+    <div class="nl-pull">
+      <p>"Estrogen is a 'master regulator' in the female brain, serving many roles that actually have nothing to do with reproduction, but rather everything to do with energy."</p>
+      <cite>— Dr. Lisa Mosconi, The XX Brain</cite>
+    </div>
+
+    <h3 class="nl-h3">The progesterone seesaw — and what happens when it hits the ground</h3>
+    <p>Estrogen doesn't act alone. Progesterone is its counterbalance — the two hormones sit on either end of a seesaw, shifting rhythmically across the menstrual cycle. After age 35, progesterone starts varying unpredictably from month to month. When progesterone drops sharply, estrogen rises on the seesaw without a counterbalancing force — producing the oestrogen dominance symptoms (bloating, migraines, irritability, insomnia) that many women experience in perimenopause, even before estrogen itself begins to fall.</p>
+    <p>Eventually, both sides of the seesaw collapse. The symptoms that follow — the full spectrum of brain fog, mood instability, sleep disruption, and anxiety — are the consequence of losing not one hormone, but an entire hormonal dialogue that the brain has been conducting since puberty.</p>
+
+    <h3 class="nl-h3">The timing hypothesis — why the window matters</h3>
+    <p>Not all interventions work at all times. The "critical window" or "timing hypothesis" describes the window during which hormone therapy can protect the brain: early in the perimenopause transition, when estrogen receptors in the brain are still intact and responsive. MHT initiated in this window is associated with preserved cognitive function, lower Alzheimer's risk, and maintained cerebral metabolism. MHT initiated ten or more years after the final period — when receptor sensitivity has diminished — shows significantly reduced benefit and, in some studies, potential harm.</p>
+    <p>This is why the conversation about hormone therapy belongs in your forties — not your sixties. The window is open now. It will not stay open indefinitely.</p>
+  </div>
+
+  <!-- 3. FROM THE EXPERTS -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">🎙️</span>
+      <span class="nl-section-label">From the Experts</span>
+    </div>
+    <div class="nl-box nl-box-expert">
+      <div class="nl-box-label">Dr. Gottfried — Huberman Lab, January 2023</div>
+      <p>Dr. Sara Gottfried brings a critical reframe to the hot flash conversation on the Huberman Lab podcast: hot flashes and night sweats are not peripheral vascular events — they are brain events. The hypothalamus, which controls thermoregulation, loses its estrogen calibration as perimenopause progresses. The result is a thermostat that fires incorrectly — triggering vasodilation and sweating in response to temperature signals that a well-estrogenised hypothalamus would have managed without incident.</p>
+      <p>Her broader point: virtually every symptom of perimenopause that appears "physical" — temperature instability, joint pain, skin changes, vaginal changes — is primarily driven by the brain losing its hormonal calibration, not by the body parts themselves malfunctioning. This is a fundamentally different framework, and it shifts the treatment logic. You are not treating a collection of separate symptoms. You are treating a brain that has lost its primary regulatory hormone.</p>
+      <p>On the microbiome connection: Dr. Gottfried also notes that the estrobolome — the community of gut bacteria that metabolises and recycles estrogen — becomes less efficient as the gut microbiome is disrupted by poor diet, stress, and ageing. Even women with adequate circulating estrogen can experience relative estrogen deficiency if their estrobolome is impaired. The gut-brain-hormone axis is bidirectional and clinically significant.</p>
+    </div>
+  </div>
+
+  <!-- 4. TRACK IT -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">📲</span>
+      <span class="nl-section-label lav">Track It</span>
+    </div>
+    <div class="nl-box nl-box-track">
+      <div class="nl-box-label">Brain &amp; Hormones — tracking the neurotransmitter effects</div>
+      <p>The four neurotransmitter systems governed by estrogen all leave measurable traces in wearable data. HRV is the most direct proxy — it reflects the balance between sympathetic (cortisol-driven) and parasympathetic (GABA-driven) nervous system tone. A sustained HRV decline correlates with the cortisol dysregulation described above; a rising HRV trend as you implement the lifestyle protocols from this newsletter is a reliable signal that the interventions are working at a neurological level.</p>
+      <p>For tracking dopamine-related changes specifically: note your motivation and focus quality each morning on a simple 1–5 scale alongside your wearable readiness score. Done over 30 days, this self-report data alongside HRV gives you a richer picture of how your neurochemistry is shifting than either metric alone.</p>
+      <div class="nl-devices">
+        <span class="nl-device-pill">Oura Ring — HRV + readiness</span>
+        <span class="nl-device-pill">WHOOP — autonomic recovery</span>
+        <span class="nl-device-pill">Garmin — stress score</span>
+        <span class="nl-device-pill">Apple Watch — HRV trend</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. PLATE & PROTOCOL -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">🍽️</span>
+      <span class="nl-section-label muted">Plate &amp; Protocol</span>
+    </div>
+    <div class="nl-box nl-box-plate">
+      <div class="nl-box-label">Supporting the neurotransmitter systems through food</div>
+      <p>With four neurotransmitter systems depressed by declining estrogen, dietary support becomes a direct clinical tool. Three food categories address three of the four systems covered above.</p>
+      <p><strong>For serotonin:</strong> tryptophan-rich foods — turkey, eggs, oats, pumpkin seeds, tofu — provide the amino acid precursor to serotonin. Pairing tryptophan sources with a small amount of complex carbohydrate at the same meal facilitates absorption into the brain.</p>
+      <p><strong>For dopamine:</strong> tyrosine-rich foods — lean meat, fish, eggs, dairy, beans, almonds — provide the precursor to both dopamine and norepinephrine. B6 and B12 (from Issue 05) are cofactors in this synthesis pathway — which is one more reason the supplement stack matters.</p>
+      <p><strong>For GABA and cortisol:</strong> magnesium — found in dark leafy greens, pumpkin seeds, dark chocolate, legumes — supports GABA receptor function and blunts cortisol reactivity. Most women are deficient. Foods first; supplement if dietary intake is consistently low.</p>
+    </div>
+  </div>
+
+  <!-- 6. MOVE -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">🏋️</span>
+      <span class="nl-section-label plum">Move Like You Mean It</span>
+    </div>
+    <div class="nl-box nl-box-move">
+      <div class="nl-box-label">Exercise as a partial estrogen substitute</div>
+      <p>Regular aerobic and resistance exercise compensates for declining estrogen in several of the five brain roles covered above. Exercise independently increases BDNF (brain-derived neurotrophic factor), which promotes the same neuroplasticity that estrogen supports. It also increases cerebral blood flow, provides a direct antidepressant effect via serotonin and endorphin release, and reduces neuroinflammation — effectively substituting for roles 2, 3, 4, and 5 in the list above.</p>
+      <p>It cannot substitute for role 1 (energy regulation) — the cerebral glucose metabolism effect requires estrogen specifically. But four out of five is a compelling argument. Exercise is the lifestyle intervention with the broadest overlap with what estrogen was doing. That is not a coincidence.</p>
+      <p><strong>This week:</strong> during one of your two resistance sessions, add five minutes of moderate aerobic activity immediately before the strength work — a brisk walk, light cycling, or a short jog. The combination of elevated heart rate followed by resistance load produces the most robust BDNF response of any training format studied.</p>
+    </div>
+  </div>
+
+  <!-- 7. WEEKLY RESET -->
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">✅</span>
+      <span class="nl-section-label muted">Your Weekly Reset</span>
+    </div>
+    <div class="nl-reset-list">
+      <div class="nl-reset-card">
+        <span class="nl-reset-icon">🥩</span>
+        <div>
+          <div class="nl-reset-lbl">Body</div>
+          <div class="nl-reset-text">Add five minutes of aerobic warm-up before your next resistance session. And identify one tryptophan-rich or tyrosine-rich food to add to your regular rotation — not as a supplement, as a meal ingredient.</div>
+        </div>
+      </div>
+      <div class="nl-reset-card">
+        <span class="nl-reset-icon">📊</span>
+        <div>
+          <div class="nl-reset-lbl">Brain</div>
+          <div class="nl-reset-text">Start a 30-day motivation log — a simple 1–5 score each morning before looking at your phone. Pair it with your wearable's HRV or readiness score. After four weeks, you'll have more useful data about your neurochemistry than most blood panels provide.</div>
+        </div>
+      </div>
+      <div class="nl-reset-card">
+        <span class="nl-reset-icon">🌱</span>
+        <div>
+          <div class="nl-reset-lbl">Mindset</div>
+          <div class="nl-reset-text">The symptoms of perimenopause are not separate problems requiring separate solutions. They are one problem — a brain recalibrating without its primary fuel. That reframe changes the response from reactive management to a coherent, unified strategy. You are not fighting symptoms. You are supporting a transition.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCE ROLL -->
+  <div class="nl-source-roll">
+    <div class="nl-source-hdr">
+      <span class="nl-source-title">📚 Sources — Issue 07</span>
+      <button class="btn-toggle-src" id="btn-sources">Hide sources</button>
+    </div>
+    <div id="source-body">
+      <div class="nl-src-list" id="src-list"></div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="nl-footer">
+  <span>Issue 07 · Cycle 2: The Mechanisms · Brain &amp; Hormones</span>
+  <span class="next">Next → VO₂ max — the single best predictor of how long you'll live (Movement &amp; Training)</span>
+</footer>
+
+</body>
+</html>
