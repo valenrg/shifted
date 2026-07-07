@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shifted · Issue 08 · VO₂ max — the single best predictor of how long you'll live</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-base:#0D0A14;--bg-surface:#15101F;--bg-elevated:#1D1729;
+  --border-subtle:#221B30;--border-default:#2E2542;--border-strong:#3E3358;
+  --text-primary:#F2EEF8;--text-secondary:#9C97B4;--text-muted:#5E5A76;--text-faint:#3F3B53;
+  --teal:#12AACF;--teal-bg:#061820;--teal-border:#0C3E50;
+  --cyan:#52D1DC;--cyan-bg:#04191C;--cyan-border:#0A3438;
+  --lav:#AFA2FF;--lav-bg:#100D24;--lav-border:#201860;
+  --plum:#C07FDA;--plum-light:#D4A0E8;--plum-dark:#8A50A8;--plum-bg:#180E22;--plum-border:#361848;
+  --pa:#C07FDA;--pa-light:#D4A0E8;--pa-dark:#8A50A8;--pa-bg:#180E22;--pa-border:#361848;
+  --ff-display:'Bricolage Grotesque',sans-serif;
+  --ff-body:'DM Sans',sans-serif;
+  --ff-mono:'JetBrains Mono',monospace;
+  --r-xs:4px;--r-sm:8px;--r-md:12px;--r-full:9999px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:var(--bg-base);color:var(--text-secondary);font-family:var(--ff-body);font-size:15px;line-height:1.8;-webkit-font-smoothing:antialiased;}
+button{cursor:pointer;font-family:var(--ff-body);border:none;background:none;}
+
+/* NAV */
+.gh-nav{position:sticky;top:0;z-index:100;background:rgba(13,10,20,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-subtle);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:44px;gap:16px;}
+.gh-nav a{text-decoration:none;}
+.gh-brand{font-family:var(--ff-display);font-weight:800;font-size:15px;background:linear-gradient(90deg,var(--lav) 0%,var(--cyan) 38%,var(--teal) 62%,var(--plum) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.gh-meta{font-family:var(--ff-mono);font-size:10px;color:var(--text-muted);}
+.gh-nav-btn{font-family:var(--ff-mono);font-size:11px;font-weight:600;color:var(--text-muted);padding:5px 10px;border-radius:6px;border:1px solid transparent;transition:all .12s;white-space:nowrap;text-decoration:none;display:inline-block;}
+.gh-nav-btn:hover{color:var(--text-primary);border-color:var(--border-default);background:var(--bg-elevated);}
+@media(max-width:480px){.gh-meta{display:none;}}
+
+/* LAYOUT */
+.nl-head{padding:44px 24px 36px;border-bottom:1px solid var(--border-subtle);max-width:700px;margin:0 auto;}
+.nl-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:28px;}
+.nl-brand-name{font-family:var(--ff-display);font-weight:800;font-size:17px;letter-spacing:-0.3px;background:linear-gradient(90deg,var(--lav) 0%,var(--cyan) 38%,var(--teal) 62%,var(--plum) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.nl-brand-sep{color:var(--border-strong);}
+.nl-brand-meta{font-size:11px;color:var(--text-muted);font-family:var(--ff-mono);}
+.nl-tag-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px;}
+.nl-tag{display:inline-flex;align-items:center;padding:3px 10px;border-radius:var(--r-full);font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;border:1px solid var(--pa-border);background:var(--pa-bg);color:var(--pa);font-family:var(--ff-mono);}
+.nl-tag.muted{border-color:var(--border-default);background:var(--bg-elevated);color:var(--text-muted);}
+.nl-issue-title{font-family:var(--ff-display);font-size:clamp(28px,5vw,42px);font-weight:800;letter-spacing:-0.8px;line-height:1.1;color:var(--text-primary);margin-bottom:14px;}
+.nl-issue-sub{font-size:15px;color:var(--text-secondary);line-height:1.65;max-width:580px;}
+
+.nl-body{max-width:700px;margin:0 auto;padding:44px 24px 0;}
+.nl-body p{font-size:15px;line-height:1.8;color:var(--text-secondary);margin-bottom:18px;}
+.nl-body p:last-child{margin-bottom:0;}
+.nl-body p strong{color:var(--text-primary);font-weight:600;}
+
+.nl-section{margin-bottom:40px;}
+.nl-section-hdr{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border-subtle);}
+.nl-section-icon{font-size:18px;}
+.nl-section-label{font-family:var(--ff-mono);font-size:10px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--pa);}
+.nl-section-label.teal{color:var(--teal);}
+.nl-section-label.lav{color:var(--lav);}
+.nl-section-label.muted{color:var(--text-muted);}
+
+.nl-h2{font-family:var(--ff-display);font-size:22px;font-weight:700;letter-spacing:-0.4px;color:var(--text-primary);margin:0 0 16px;line-height:1.2;}
+.nl-h3{font-family:var(--ff-display);font-size:15px;font-weight:700;letter-spacing:-0.1px;color:var(--pa);margin:24px 0 8px;}
+
+.nl-box{border-radius:var(--r-md);padding:20px 22px;margin-bottom:18px;border:1px solid;}
+.nl-box-science{background:var(--pa-bg);border-color:var(--pa-border);}
+.nl-box-expert{background:var(--bg-elevated);border-color:var(--border-default);}
+.nl-box-track{background:var(--lav-bg);border-color:var(--lav-border);}
+.nl-box-plate{background:#0A0714;border-color:#1C1240;}
+.nl-box-move{background:var(--plum-bg);border-color:var(--plum-border);}
+.nl-box-label{font-family:var(--ff-mono);font-size:9px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--pa);margin-bottom:12px;}
+.nl-box-track  .nl-box-label{color:var(--lav);}
+.nl-box-plate  .nl-box-label{color:#8070E8;}
+
+.nl-pull{border-left:3px solid var(--pa);margin:28px 0;padding:16px 22px;background:var(--bg-elevated);border-radius:0 var(--r-sm) var(--r-sm) 0;}
+.nl-pull p{font-family:var(--ff-display);font-size:17px;font-weight:600;font-style:italic;line-height:1.6;color:var(--text-primary)!important;margin-bottom:10px!important;}
+.nl-pull cite{font-size:11px;color:var(--text-muted);font-family:var(--ff-mono);font-style:normal;}
+
+.nl-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:26px;}
+.nl-stat{background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:16px;text-align:center;}
+.nl-stat-val{font-family:var(--ff-mono);font-size:24px;font-weight:700;color:var(--pa);line-height:1;margin-bottom:6px;}
+.nl-stat-lbl{font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:4px;}
+.nl-stat-sub{font-size:11px;color:var(--text-muted);line-height:1.4;}
+
+/* ZONE TABLE */
+.zone-list{display:flex;flex-direction:column;gap:8px;margin:14px 0;}
+.zone-row{display:grid;grid-template-columns:100px 1fr;background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--r-sm);overflow:hidden;}
+.zone-name{padding:12px 14px;background:var(--pa-bg);border-right:1px solid var(--pa-border);display:flex;flex-direction:column;justify-content:center;}
+.zone-num{font-family:var(--ff-mono);font-size:11px;font-weight:700;color:var(--pa);}
+.zone-hr{font-size:10px;color:var(--text-muted);margin-top:2px;}
+.zone-desc{padding:12px 16px;font-size:12.5px;color:var(--text-secondary);line-height:1.5;display:flex;align-items:center;}
+
+/* PROTOCOL CARDS */
+.proto-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:16px 0;}
+.proto-card{background:var(--bg-surface);border:1px solid var(--pa-border);border-radius:var(--r-sm);padding:15px 16px;}
+.proto-name{font-family:var(--ff-display);font-size:13.5px;font-weight:700;color:var(--pa);margin-bottom:6px;}
+.proto-steps{font-size:12px;color:var(--text-secondary);line-height:1.55;margin-bottom:6px;}
+.proto-why{font-size:11px;color:var(--text-muted);font-style:italic;line-height:1.4;}
+
+.nl-devices{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;}
+.nl-device-pill{font-family:var(--ff-mono);font-size:10px;font-weight:600;padding:3px 10px;border-radius:var(--r-full);background:var(--lav-bg);color:var(--lav);border:1px solid var(--lav-border);}
+
+.nl-reset-list{display:flex;flex-direction:column;gap:8px;}
+.nl-reset-card{display:flex;gap:14px;align-items:flex-start;background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--r-sm);padding:14px 16px;}
+.nl-reset-icon{font-size:18px;flex-shrink:0;margin-top:2px;}
+.nl-reset-lbl{font-size:10px;font-weight:700;color:var(--pa);text-transform:uppercase;letter-spacing:.8px;font-family:var(--ff-mono);margin-bottom:4px;}
+.nl-reset-text{font-size:13.5px;color:var(--text-secondary);line-height:1.6;}
+
+.nl-divider{height:1px;background:var(--border-subtle);margin:36px 0;}
+
+.nl-source-roll{margin-top:48px;padding-top:28px;border-top:1px solid var(--border-subtle);}
+.nl-source-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}
+.nl-source-title{font-family:var(--ff-mono);font-size:10px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--pa);}
+.btn-toggle-src{background:var(--bg-elevated);border:1px solid var(--border-default);border-radius:var(--r-full);padding:3px 10px;font-size:11px;color:var(--text-muted);font-family:var(--ff-mono);}
+.nl-src-list{display:flex;flex-direction:column;gap:8px;}
+.nl-src-item{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:var(--r-sm);border:1px solid var(--border-subtle);background:var(--bg-surface);}
+.nl-src-code{font-family:var(--ff-mono);font-size:9px;font-weight:700;padding:2px 7px;border-radius:var(--r-xs);color:#050F14;flex-shrink:0;margin-top:2px;white-space:nowrap;}
+.nl-src-full{font-size:12px;color:var(--text-secondary);line-height:1.5;margin-bottom:4px;}
+.nl-src-audio{font-size:11px;color:var(--text-muted);font-style:italic;font-family:var(--ff-mono);}
+
+.nl-footer{max-width:700px;margin:44px auto 0;padding:20px 24px 60px;border-top:1px solid var(--border-subtle);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.nl-footer span{font-family:var(--ff-mono);font-size:10px;color:var(--text-muted);}
+.nl-footer .next{font-style:italic;color:var(--pa);}
+
+@media(max-width:480px){
+  .nl-stats{grid-template-columns:repeat(2,1fr);}
+  .zone-row{grid-template-columns:1fr;}
+  .zone-name{border-right:none;border-bottom:1px solid var(--pa-border);}
+  .proto-grid{grid-template-columns:1fr;}
+}
+</style>
+
+<script>
+const SOURCES = {
+  TRAIN: { code:"TRAIN", color:"#C07FDA", short:"How to Train Guide", full:"How to Train According to the Experts: A Guide on Getting Strong, Building Muscle, and Elevating Fitness (HowToTrainGuide.com, 2024)", spoken:"the How to Train According to the Experts guide" },
+  ROAR:  { code:"ROAR",  color:"#C07FDA", short:"ROAR", full:"Dr. Stacy Sims, ROAR: Match Your Food and Fitness to Your Unique Female Physiology for Optimum Performance, Great Health, and a Strong Body for Life (Rodale Books, revised edition)", spoken:"Dr. Stacy Sims in ROAR" },
+  XX:    { code:"XX",    color:"#AFA2FF", short:"The XX Brain", full:"Dr. Lisa Mosconi, The XX Brain: The Groundbreaking Science Empowering Women to Maximize Cognitive Health and Prevent Alzheimer's Disease (Avery/Penguin Random House, 2020)", spoken:"Dr. Lisa Mosconi in The XX Brain" },
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+  var btnSrc  = document.getElementById('btn-sources');
+  var srcBody = document.getElementById('source-body');
+  var srcList = document.getElementById('src-list');
+  if (btnSrc && srcBody && srcList) {
+    Object.values(SOURCES).forEach(function(s) {
+      var item = document.createElement('div');
+      item.className = 'nl-src-item';
+      item.innerHTML =
+        '<span class="nl-src-code" style="background:' + s.color + '">' + s.code + '</span>' +
+        '<div><div class="nl-src-full">' + s.full + '</div>' +
+        '<div class="nl-src-audio" style="color:' + s.color + '">' + s.spoken + '</div></div>';
+      srcList.appendChild(item);
+    });
+    btnSrc.addEventListener('click', function() {
+      var hidden = srcBody.style.display === 'none';
+      srcBody.style.display = hidden ? 'block' : 'none';
+      btnSrc.textContent = hidden ? 'Hide sources' : 'Show sources';
+    });
+  }
+});
+</script>
+</head>
+<body>
+
+<nav class="gh-nav">
+  <a href="index.html" class="gh-brand">shifted</a>
+  <span class="gh-meta">Issue 08 · Movement &amp; Training · Cycle 2</span>
+  <a href="index.html" class="gh-nav-btn">← All issues</a>
+</nav>
+
+<header class="nl-head">
+  <div class="nl-brand-row">
+    <span class="nl-brand-name">shifted</span>
+    <span class="nl-brand-sep">/</span>
+    <span class="nl-brand-meta">Issue 08 · Week 8 · Cycle 2</span>
+  </div>
+  <div class="nl-tag-row">
+    <span class="nl-tag">Movement &amp; Training</span>
+    <span class="nl-tag muted">~15 min read</span>
+    <span class="nl-tag muted">Cycle 2: The Mechanisms</span>
+  </div>
+  <h1 class="nl-issue-title">VO₂ max — the single best predictor of how long you'll live</h1>
+  <p class="nl-issue-sub">Higher cardiorespiratory fitness at 46 increases life expectancy by 2–5 years. Issue 02 gave you the muscle case. This is the aerobic case — and it may be the stronger one.</p>
+</header>
+
+<main class="nl-body">
+
+  <p>If you could only track one number to predict how long and how well you'll live, most longevity researchers would not choose cholesterol, blood pressure, or even body fat percentage. They would choose VO₂ max — your body's maximum capacity to take in, transport, and use oxygen during intense exercise.</p>
+  <p>This issue goes deeper into the aerobic side of the Movement pillar, following Issue 02's resistance training foundation. Where that issue made the case for muscle as a geroprotective organ, this one makes the case for your cardiovascular and mitochondrial systems — and gives you the specific training zones and protocols to build both.</p>
+
+  <div class="nl-divider"></div>
+
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">🔬</span>
+      <span class="nl-section-label">This Week's Science</span>
+    </div>
+    <div class="nl-box nl-box-science">
+      <p>VO₂ max is defined as the highest amount of oxygen your body can use during intense, full-body exercise — a composite measure of how efficiently your lungs take in air, how well your heart and blood vessels deliver oxygenated blood to your muscles, and how effectively your mitochondria convert that oxygen into usable energy. It is, in short, a snapshot of your entire aerobic machinery working together.</p>
+      <p>The data on what a high VO₂ max predicts is striking: some studies show as much as an 80% reduction in mortality risk for "elite" performers on a VO₂ max test compared to the lowest performers. Having a low VO₂ max was found to be just as bad, or worse, than having coronary artery disease or being a smoker. Increasing VO₂ max by just 3.5 ml/kg/min — one metabolic equivalent, or MET — reduces all-cause mortality risk by 11%.</p>
+    </div>
+  </div>
+
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">💡</span>
+      <span class="nl-section-label">The Deep Dive</span>
+    </div>
+    <h2 class="nl-h2">Training zones, the fitness cliff, and why timing matters more than you think</h2>
+
+    <div class="nl-stats">
+      <div class="nl-stat"><div class="nl-stat-val">80%</div><div class="nl-stat-lbl">Lower mortality risk</div><div class="nl-stat-sub">Elite vs. low VO₂ max performers</div></div>
+      <div class="nl-stat"><div class="nl-stat-val">11%</div><div class="nl-stat-lbl">Risk reduction</div><div class="nl-stat-sub">Per 3.5 ml/kg/min (1 MET) increase</div></div>
+      <div class="nl-stat"><div class="nl-stat-val">Age 50</div><div class="nl-stat-lbl">Heart begins shrinking</div><div class="nl-stat-sub">Structural change starts, "sweet spot" for intervention</div></div>
+      <div class="nl-stat"><div class="nl-stat-val">Age 70</div><div class="nl-stat-lbl">The structural ceiling</div><div class="nl-stat-sub">Heart structure becomes very difficult to modify with training</div></div>
+    </div>
+
+    <h3 class="nl-h3">Five training zones — and why most people only ever use two</h3>
+    <p>Most casual exercisers unknowingly train in only one or two intensity zones, typically hovering in the moderate range without ever training truly easy or truly hard. Optimal cardiorespiratory development requires deliberately hitting all five zones across a week, each producing distinct physiological adaptations.</p>
+
+    <div class="zone-list">
+      <div class="zone-row">
+        <div class="zone-name"><span class="zone-num">ZONE 1</span><span class="zone-hr">50–60% max HR</span></div>
+        <div class="zone-desc">Recovery intensity. You could easily hold a full conversation. Active recovery days, warm-ups, cool-downs.</div>
+      </div>
+      <div class="zone-row">
+        <div class="zone-name"><span class="zone-num">ZONE 2</span><span class="zone-hr">60–70% max HR</span></div>
+        <div class="zone-desc">Low-to-moderate intensity. Full sentences possible with some effort. The aerobic base-building zone — most weekly volume should live here.</div>
+      </div>
+      <div class="zone-row">
+        <div class="zone-name"><span class="zone-num">ZONE 3</span><span class="zone-hr">70–80% max HR</span></div>
+        <div class="zone-desc">Threshold intensity. Difficult to speak a full sentence. Improves your lactate threshold — the pace you can sustain before fatigue accumulates rapidly.</div>
+      </div>
+      <div class="zone-row">
+        <div class="zone-name"><span class="zone-num">ZONE 4</span><span class="zone-hr">80–95% max HR</span></div>
+        <div class="zone-desc">High-intensity. Only one or two words possible between breaths. This is where VO₂ max itself is most directly trained.</div>
+      </div>
+      <div class="zone-row">
+        <div class="zone-name"><span class="zone-num">ZONE 5</span><span class="zone-hr">95%+ max HR</span></div>
+        <div class="zone-desc">Maximal exertion. Speech is not possible. Short, all-out efforts — the top of the intensity spectrum.</div>
+      </div>
+    </div>
+
+    <p><strong>A practical note on "Zone 2 training":</strong> the popular term usually refers to lactate threshold training rather than a strict heart rate percentage. Because individual lactate accumulation and clearance rates vary, correlating a true physiological "Zone 2" with a fixed percentage of max heart rate is inherently imprecise — heart rate zones are a useful proxy, not a perfect substitute for lactate testing.</p>
+
+    <h3 class="nl-h3">The heart's shrinking window — why middle age is the intervention sweet spot</h3>
+    <p>The heart begins to shrink in size around age 50 and completes most of that structural change by 65. After 70, it becomes very difficult to modify the heart's structure through training. This creates what sports cardiologists call a "sweet spot" for intervention: middle age, when the heart is still structurally responsive to training stimulus but the clock on that responsiveness has started running.</p>
+    <p>This does not mean it is too late to start later — fitness gains remain available at any age, and even modest improvements meaningfully shift mortality risk. But the ceiling on how much structural adaptation is achievable is highest right now, in your forties and fifties, and drops progressively after.</p>
+
+    <h3 class="nl-h3">HIIT — the non-negotiable ingredient most training plans skip</h3>
+    <p>High-intensity interval training produces adaptations that moderate steady-state cardio does not reliably deliver: it strengthens the heart by increasing cardiac output and stroke volume, drives superior mitochondrial adaptation compared to lower-intensity training, ramps up autophagy — the cellular cleanup process that clears damaged cells — and specifically recruits the fast-twitch muscle fibers that decline fastest with age.</p>
+    <p>Perhaps most notably, HIIT appears to eliminate "non-responders" — the roughly 40% of people who show no measurable fitness improvement from standard moderate endurance training. Nearly everyone experiences fitness gains when intensity is increased. If you've ever felt like your cardio routine "stopped working," this may be why.</p>
+
+    <div class="nl-pull">
+      <p>"Three weeks of bed rest was worse for the body's ability to do physical work than 30 years of aging. It shows how severe the effects of inactivity can be on the cardiovascular system."</p>
+      <cite>— Dr. Benjamin Levine, sports cardiologist</cite>
+    </div>
+  </div>
+
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">🎙️</span>
+      <span class="nl-section-label">From the Experts</span>
+    </div>
+    <div class="nl-box nl-box-expert">
+      <div class="nl-box-label">Dr. Benjamin Levine — on the "fitness cliff"</div>
+      <p>Dr. Benjamin Levine, one of the leading sports cardiologists studying age-related cardiac decline, describes a phenomenon he calls the "fitness cliff" — the accelerating drop in aerobic capacity that occurs with age, even in athletes who have trained consistently their whole lives. Fitness declines in everyone eventually. But Levine's research shows the trajectory is not fixed: the higher your starting point going into that decline, the better positioned you are on the other side of it.</p>
+      <p>His broader point connects directly to the heart-shrinkage timeline above: regular endurance training performed consistently, like that of elite masters athletes, can keep the heart functioning at a level comparable to a healthy 30-year-old — decades later. The compliance of the heart, its ability to stretch and accommodate blood volume, is itself a marker of youthful cardiovascular structure, and it responds to training stimulus at any age, even if the magnitude of adaptation is highest earlier.</p>
+    </div>
+  </div>
+
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">📲</span>
+      <span class="nl-section-label lav">Track It</span>
+    </div>
+    <div class="nl-box nl-box-track">
+      <div class="nl-box-label">Movement — VO₂ max is now a wearable metric</div>
+      <p>Most modern fitness trackers now estimate VO₂ max directly from heart rate and pace data during runs or walks, using algorithms validated against laboratory treadmill testing. Garmin's estimate is generally considered the most accurate for women specifically, though all major platforms provide a usable trend line even if the absolute number carries some margin of error.</p>
+      <p>The number itself matters less than the trend. Log your VO₂ max estimate this week as your Cycle 2 baseline. Structured HIIT sessions (below) reliably move this number within 4–6 weeks — it is one of the few fitness metrics where you can expect to see wearable-tracked improvement on a timescale short enough to stay motivating.</p>
+      <div class="nl-devices">
+        <span class="nl-device-pill">Garmin — VO₂ max estimate</span>
+        <span class="nl-device-pill">Apple Watch — cardio fitness</span>
+        <span class="nl-device-pill">WHOOP — strain + HR zones</span>
+        <span class="nl-device-pill">Polar — running index</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">🍽️</span>
+      <span class="nl-section-label muted">Plate &amp; Protocol</span>
+    </div>
+    <div class="nl-box nl-box-plate">
+      <div class="nl-box-label">Fueling the mitochondrial adaptation</div>
+      <p>HIIT and endurance training both drive mitochondrial biogenesis — the creation of new cellular energy-producing structures. That process has raw material requirements: adequate protein for the enzymatic machinery involved, and adequate carbohydrate availability around high-intensity sessions specifically, since Zone 4–5 efforts rely heavily on glycogen rather than fat oxidation.</p>
+      <p><strong>This week:</strong> on days with a HIIT or interval session, eat a carbohydrate-containing meal or snack within the two hours before training. This is not necessary for Zone 1–2 sessions, which run efficiently on fat oxidation, but becomes a meaningful performance and recovery factor once you're working above threshold.</p>
+    </div>
+  </div>
+
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">🏋️</span>
+      <span class="nl-section-label">Move Like You Mean It</span>
+    </div>
+    <h3 class="nl-h3" style="margin-top:0">Three protocols — pick one to start this week</h3>
+    <div class="proto-grid">
+      <div class="proto-card">
+        <div class="proto-name">The 10-Minute Workout</div>
+        <div class="proto-steps">10 × 60-second intervals at ~90% max HR, with 60 seconds recovery between each. Add a 10-minute warm-up and short cooldown. Total time: ~20 minutes.</div>
+        <div class="proto-why">Low-volume, time-efficient HIIT protocol. Produces dramatic VO₂ max, metabolic, and insulin sensitivity improvements. Use 1–3×/week.</div>
+      </div>
+      <div class="proto-card">
+        <div class="proto-name">20/10 Sprint Sets</div>
+        <div class="proto-steps">20 seconds hard, 10 seconds rest, repeat 8× (one set = ~4 min). Perform 1–4 sets with 3–5 min full recovery between sets. Last rep of each set should be maximal effort.</div>
+        <div class="proto-why">A 2:1 work:rest ratio drives strong VO₂ max adaptation. Total session: 25–45 minutes depending on sets completed.</div>
+      </div>
+      <div class="proto-card">
+        <div class="proto-name">Zone 2 Base Session</div>
+        <div class="proto-steps">20–90 minutes at 60–70% max HR — brisk walk, easy cycle, light jog. You should be able to speak in full sentences with some effort.</div>
+        <div class="proto-why">Builds the aerobic foundation that HIIT sessions draw on. Target 150–300 min/week across all easy sessions combined.</div>
+      </div>
+    </div>
+    <p><span>Exercise snacks — brief, isolated bouts of vigorous activity spread through the day — are a genuinely evidence-backed alternative on days when a structured session isn't feasible. Three to four bouts of 20-second stationary bike sprints, or three sets of briskly climbing three flights of stairs, spaced through the day, have each been shown to improve VO₂ max by 5–6% over six weeks. The optimal frequency is 3–4 times daily, 4–5 minutes total — about 30 minutes of cumulative weekly "exercise" that doesn't require a gym, equipment, or a dedicated block of time.</span></p>
+  </div>
+
+  <div class="nl-section">
+    <div class="nl-section-hdr">
+      <span class="nl-section-icon">✅</span>
+      <span class="nl-section-label muted">Your Weekly Reset</span>
+    </div>
+    <div class="nl-reset-list">
+      <div class="nl-reset-card">
+        <span class="nl-reset-icon">🏃‍♀️</span>
+        <div>
+          <div class="nl-reset-lbl">Body</div>
+          <div class="nl-reset-text">Add one structured HIIT session this week — the 10-Minute Workout or the 20/10 Sprint Sets. Pair it with your existing resistance training from Issue 02, on a separate day if possible.</div>
+        </div>
+      </div>
+      <div class="nl-reset-card">
+        <span class="nl-reset-icon">📊</span>
+        <div>
+          <div class="nl-reset-lbl">Brain</div>
+          <div class="nl-reset-text">Check your wearable's VO₂ max estimate and log it as your Cycle 2 baseline. Set a calendar reminder to check again in six weeks — this is one of the few metrics where consistent training produces a visible number change on that timescale.</div>
+        </div>
+      </div>
+      <div class="nl-reset-card">
+        <span class="nl-reset-icon">🌱</span>
+        <div>
+          <div class="nl-reset-lbl">Mindset</div>
+          <div class="nl-reset-text">The "fitness cliff" is real, but it is not a cliff edge you either avoid or fall off entirely. Every improvement in VO₂ max, at any age, shifts your position on that curve. There is no point at which starting stops mattering.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nl-source-roll">
+    <div class="nl-source-hdr">
+      <span class="nl-source-title">📚 Sources — Issue 08</span>
+      <button class="btn-toggle-src" id="btn-sources">Hide sources</button>
+    </div>
+    <div id="source-body">
+      <div class="nl-src-list" id="src-list"></div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="nl-footer">
+  <span>Issue 08 · Cycle 2: The Mechanisms · Movement &amp; Training</span>
+  <span class="next">Next → Protein in midlife — how much women actually need (Nutrition &amp; Fueling)</span>
+</footer>
+
+</body>
+</html>
